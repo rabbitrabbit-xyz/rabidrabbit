@@ -20,6 +20,7 @@
       justify-content: center;
       opacity: 0;
       animation: pageFadeIn 1.5s ease forwards;
+      position: relative;
     }
 
     @keyframes pageFadeIn {
@@ -29,11 +30,13 @@
     }
 
     .home-link {
-      margin-bottom: 20px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
     }
 
     .home-image {
-      width: 150px;
+      width: 80px;
       height: auto;
       cursor: pointer;
       border: 2px solid white;
@@ -118,7 +121,6 @@
       }
     }
 
-    /* Add a class for triggering the animation on image change */
     .fade-animate {
       animation: fadeZoom 1s ease-in-out;
     }
@@ -126,7 +128,7 @@
 </head>
 <body>
 
-  <!-- RABID RABBIT image that links back home -->
+  <!-- RABID RABBIT image floating in top left -->
   <a class="home-link" href="index.html">
     <img class="home-image" src="images/RABID RABBIT.jpeg" alt="Back to Home">
   </a>
@@ -157,16 +159,10 @@
     function changeSlide(direction) {
       currentIndex = (currentIndex + direction + images.length) % images.length;
 
-      // Reset animation by removing and re-adding the class
       slideshow.classList.remove('fade-animate');
-      
-      // Force reflow by accessing the offsetWidth property
       void slideshow.offsetWidth;
-
-      // Add the class back to trigger the animation
       slideshow.classList.add('fade-animate');
 
-      // Update image source and alt text
       slideshow.src = images[currentIndex].src;
       slideshow.alt = images[currentIndex].alt;
     }
