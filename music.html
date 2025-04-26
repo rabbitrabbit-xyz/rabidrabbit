@@ -3,24 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Music</title>
+  <title>Music</title>
   <link rel="icon" href="rabbitico.ico" type="image/x-icon">
   
   <style>
     body {
       font-family: 'Courier Prime', Courier, monospace;
       background-color: #000;
-      color: white;
+      color: #fff;
       margin: 0;
       padding: 0;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      flex-direction: column;
       text-align: center;
       position: relative;
-      overflow: hidden;
+    }
+
+    .content {
+      z-index: 1;
     }
 
     h1 {
@@ -44,96 +46,51 @@
 
     .music-links a {
       text-decoration: none;
-      color: #ecf0f1;
+      color: #fff;
       font-size: 20px;
       transition: color 0.3s ease;
     }
 
     .music-links a:hover {
-      color: #f39c12;
+      color: #ccc;
     }
 
     footer {
       margin-top: 40px;
       font-size: 14px;
-      color: #95a5a6;
+      color: #888;
     }
 
-    /* Image styling */
-    .background-image {
-      position: absolute;
+    .floating-image {
+      position: fixed;
       right: 0;
-      top: 0;
-      height: 100%;
-      opacity: 0.2;
-      z-index: -1;
-    }
-
-    /* Button Styling */
-    .button {
-      background-color: #fff;
-      color: #000;
-      font-family: 'Courier Prime', Courier, monospace;
-      padding: 15px 30px;
-      margin: 10px;
-      border: none;
-      border-radius: 5px;
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .button:hover {
-      background-color: #555;
-      color: #fff;
+      top: 50%;
+      transform: translateY(-50%);
+      max-height: 80vh;
+      opacity: 0.8;
+      pointer-events: none; /* makes sure clicks go through the image */
     }
   </style>
 </head>
 <body>
 
-  <h1>My Music</h1>
-  <p>Explore my projects and playlists:</p>
-  
-  <ul class="music-links">
-    <li><a href="https://open.spotify.com/artist/7yhWlaxkJF28CMBSEhsyzR" target="_blank">Jake O'Keefe on Spotify</a></li>
-    <li><a href="https://open.spotify.com/artist/3YhsbYLUIruJIkh9q9aVaP" target="_blank">Miner Pentway on Spotify</a></li>
-    <li><a href="https://open.spotify.com/artist/6jUhapgh2BBUNQa5L9FpYk" target="_blank">Blackwater on Spotify</a></li>
-    <li><a href="https://linktr.ee/blackwatervt" target="_blank">Linktree (Blackwater)</a></li>
-  </ul>
-  
-  <!-- Background Image -->
-  <img src="images/Rabid_rabbit_siding.png" alt="Rabid Rabbit Siding" class="background-image">
-  
-  <!-- Background Music -->
-  <audio id="bg-music" loop>
-    <source src="saxroadrabbit.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+  <div class="content">
+    <h1>Music</h1>
+    <p>projects and playlists:</p>
 
-  <!-- Play/Pause Button -->
-  <button id="toggle-music" class="button">Play Music</button>
-  
-  <footer>
-    <p>Created by [Your Name]</p>
-  </footer>
-  
-  <script>
-    // Play/Pause music functionality
-    const music = document.getElementById('bg-music');
-    const toggleBtn = document.getElementById('toggle-music');
-    let isPlaying = false;
+    <ul class="music-links">
+      <li><a href="https://open.spotify.com/artist/7yhWlaxkJF28CMBSEhsyzR" target="_blank">Jake O'Keefe on Spotify</a></li>
+      <li><a href="https://open.spotify.com/artist/3YhsbYLUIruJIkh9q9aVaP" target="_blank">Miner Pentway on Spotify</a></li>
+      <li><a href="https://open.spotify.com/artist/6jUhapgh2BBUNQa5L9FpYk" target="_blank">Blackwater on Spotify</a></li>
+      <li><a href="https://linktr.ee/blackwatervt" target="_blank">Linktree (Blackwater)</a></li>
+    </ul>
 
-    toggleBtn.addEventListener('click', () => {
-      if (isPlaying) {
-        music.pause();
-        toggleBtn.textContent = 'Play Music';
-      } else {
-        music.play();
-        toggleBtn.textContent = 'Pause Music';
-      }
-      isPlaying = !isPlaying;
-    });
-  </script>
+    <footer>
+      <p>rabid rabbit</p>
+    </footer>
+  </div>
+
+  <img class="floating-image" src="images/Rabid rabbit siding.png" alt="Rabid Rabbit Siding">
 
 </body>
 </html>
