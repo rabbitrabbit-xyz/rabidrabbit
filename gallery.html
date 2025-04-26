@@ -10,7 +10,8 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #000;
+      background: url('images/Candy Mountains.png') no-repeat center center fixed;
+      background-size: cover;
       color: white;
       font-family: Courier, monospace;
       display: flex;
@@ -40,7 +41,7 @@
       height: 70px;
       object-fit: cover;
       border: 2px solid white;
-      border-radius: 50%; /* Makes it a circle */
+      border-radius: 50%;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -61,7 +62,7 @@
     }
 
     .home-link:hover .home-image {
-      transform: scale(1.1) rotate(-3deg);
+      transform: rotate(var(--random-rotate)) scale(1.1);
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
     }
 
@@ -79,6 +80,7 @@
       border: 5px solid white;
       border-radius: 8px;
       animation: fadeZoom 1s ease-in-out;
+      background-color: rgba(0, 0, 0, 0.3);
     }
 
     .nav-button {
@@ -144,7 +146,7 @@
 </head>
 
 <body>
-  <a class="home-link" href="index.html">
+  <a class="home-link" href="index.html" id="homeLink">
     <img class="home-image" src="images/RABID RABBIT.jpeg" alt="Back to Home">
     <div class="home-text">Back to Home</div>
   </a>
@@ -175,16 +177,10 @@
     function changeSlide(direction) {
       currentIndex = (currentIndex + direction + images.length) % images.length;
 
-      // Reset animation by removing and re-adding the class
       slideshow.classList.remove('fade-animate');
-      
-      // Force reflow by accessing the offsetWidth property
       void slideshow.offsetWidth;
-
-      // Add the class back to trigger the animation
       slideshow.classList.add('fade-animate');
 
-      // Update image source and alt text
       slideshow.src = images[currentIndex].src;
       slideshow.alt = images[currentIndex].alt;
     }
@@ -208,6 +204,13 @@
       button.textContent = "⏸";
     }).catch(() => {
       button.textContent = "▶";
+    });
+
+    // RANDOM ROTATION EFFECT ON HOVER
+    const homeLink = document.getElementById('homeLink');
+    homeLink.addEventListener('mouseover', () => {
+      const randomDegree = (Math.random() * 10 - 5).toFixed(2) + 'deg'; // random between -5deg and 5deg
+      homeLink.style.setProperty('--random-rotate', randomDegree);
     });
   </script>
 </body>
