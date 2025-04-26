@@ -5,23 +5,26 @@
     <title>Rabid Rabbit</title>
   </head>
 
-  <audio id="background-music" autoplay loop>
+<audio id="background-music" autoplay loop>
   <source src="audio/Rabbit-theme.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
-<button onclick="toggleMusic()" style="position: fixed; bottom: 20px; right: 20px; z-index: 10; padding: 8px 12px; background: black; color: white; border: none; cursor: pointer;">
-  🔇 Toggle Music
+<button onclick="toggleMusic()" style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); padding: 10px; background: transparent; border: none; cursor: pointer; font-size: 24px;">
+  ▶️
 </button>
 
 <script>
   const music = document.getElementById('background-music');
+  const button = document.querySelector("button");
 
   function toggleMusic() {
     if (music.paused) {
       music.play();
+      button.innerHTML = "⏸️";  // Change button to pause when playing
     } else {
       music.pause();
+      button.innerHTML = "▶️";  // Change button to play when paused
     }
   }
 </script>
