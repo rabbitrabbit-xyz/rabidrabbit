@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rabid Rabbit Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: white;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      width: 100%;
+    }
+    .image {
+      width: 100%;
+      height: auto;
+      border: 5px solid white;
+      border-radius: 8px;
+    }
+    #audio {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="gallery">
+    <img class="image" src="images/RABID RABBIT.jpeg" alt="Art 1">
+    <img class="image" src="images/Flower.png" alt="Art 2">
+    <!-- Add more images as needed -->
+  </div>
+
+  <audio id="background-music" autoplay loop>
+    <source src="audio/big-rock-candy-mountains.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <button id="audio" onclick="toggleMusic()">▶️</button>
+
+  <script>
+    const music = document.getElementById('background-music');
+    const button = document.getElementById('audio');
+
+    // Function to toggle play/pause
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+        button.innerHTML = "⏸️"; // Change to pause icon
+      } else {
+        music.pause();
+        button.innerHTML = "▶️"; // Change to play icon
+      }
+    }
+
+    // Autoplay the music when the page loads
+    music.play().then(() => {
+      console.log('Music started automatically');
+    }).catch((error) => {
+      console.log('Autoplay was blocked, waiting for user interaction');
+    });
+  </script>
+</body>
+</html>
