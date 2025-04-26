@@ -5,7 +5,7 @@
     <title>Rabid Rabbit</title>
   </head>
 <audio id="background-music" autoplay loop>
-<source src="audio/Rabbit-theme.mp3" type="audio/mpeg">
+  <source src="audio/big-rock-candy-mountains.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
@@ -17,16 +17,25 @@
   const music = document.getElementById('background-music');
   const button = document.querySelector("button");
 
+  // Try to play the music as soon as the page loads
+  window.onload = () => {
+    music.play().catch((error) => {
+      console.log("Autoplay blocked by browser, waiting for user interaction...");
+    });
+  };
+
+  // Toggle play/pause when the button is clicked
   function toggleMusic() {
     if (music.paused) {
       music.play();
-      button.innerHTML = "⏸️";  // Change button to pause when playing
+      button.innerHTML = "⏸️";  // Change to pause icon
     } else {
       music.pause();
-      button.innerHTML = "▶️";  // Change button to play when paused
+      button.innerHTML = "▶️";  // Change to play icon
     }
   }
 </script>
+
   <body>
     <h1>Rabid Rabbit</h1>
     <p>Art. Writing. Music.</p>
