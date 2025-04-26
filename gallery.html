@@ -121,10 +121,17 @@
     const slideshow = document.getElementById('slideshow');
 
     function changeSlide(direction) {
-      currentIndex = (currentIndex + direction + images.length) % images.length;
-      slideshow.src = images[currentIndex].src;
-      slideshow.alt = images[currentIndex].alt;
-    }
+  currentIndex = (currentIndex + direction + images.length) % images.length;
+
+  // Reset animation
+  slideshow.classList.remove('fade-animate');
+  void slideshow.offsetWidth; // Trigger reflow
+  slideshow.classList.add('fade-animate');
+
+  slideshow.src = images[currentIndex].src;
+  slideshow.alt = images[currentIndex].alt;
+}
+
 
     const music = document.getElementById('background-music');
     const button = document.getElementById('audio-control');
