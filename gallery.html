@@ -20,21 +20,21 @@
     }
 
     /* HEADER STYLES */
-   .header {
-  position: relative;
-  width: 100%;
-  height: 120px;
-  background: url('images/rc (1).png') no-repeat center center;
-  background-size: 70%;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.3); /* Thin, subtle white border */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
-  box-sizing: border-box;
-}
-
+    .header {
+      position: relative;
+      width: 100%;
+      height: 120px;
+      background: url('images/rc (1).png') no-repeat center center;
+      background-size: 70%;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3); /* Thin, subtle white border */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
+      box-sizing: border-box;
+      z-index: 1;
+    }
 
     .home-link {
       position: absolute;
-      top: 20px;
+      top: 15px; /* Adjusted top margin for better positioning */
       left: 20px;
       text-align: center;
       text-decoration: none;
@@ -153,6 +153,18 @@
 
     .fade-animate {
       animation: fadeZoom 1s ease-in-out;
+    }
+
+    /* Media Query for iPhone */
+    @media (max-width: 768px) {
+      .header {
+        height: 100px; /* Make the header smaller on mobile */
+      }
+
+      .home-link {
+        top: 10px; /* Adjust home button position */
+        left: 10px; /* Adjust home button position */
+      }
     }
   </style>
 </head>
