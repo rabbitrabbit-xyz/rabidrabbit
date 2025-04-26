@@ -4,6 +4,29 @@
     <meta charset="UTF-8" />
     <title>Rabid Rabbit</title>
   </head>
+
+  <audio id="background-music" autoplay loop>
+  <source src="audio/Rabbit-theme.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<button onclick="toggleMusic()" style="position: fixed; bottom: 20px; right: 20px; z-index: 10; padding: 8px 12px; background: black; color: white; border: none; cursor: pointer;">
+  🔇 Toggle Music
+</button>
+
+<script>
+  const music = document.getElementById('background-music');
+
+  function toggleMusic() {
+    if (music.paused) {
+      music.play();
+    } else {
+      music.pause();
+    }
+  }
+</script>
+
+  
   <body>
     <h1>Rabid Rabbit</h1>
     <p>Art. Writing. Music.</p>
