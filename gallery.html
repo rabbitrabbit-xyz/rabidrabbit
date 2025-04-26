@@ -18,8 +18,32 @@
       align-items: center;
       height: 100vh;
       justify-content: center;
-      position: relative;
-      overflow: hidden;
+      opacity: 0;
+      animation: pageFadeIn 1.5s ease forwards;
+    }
+
+    @keyframes pageFadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .home-link {
+      margin-bottom: 20px;
+    }
+
+    .home-image {
+      width: 150px;
+      height: auto;
+      cursor: pointer;
+      border: 2px solid white;
+      border-radius: 8px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .home-image:hover {
+      transform: scale(1.05);
+      opacity: 0.8;
     }
 
     .slideshow-container {
@@ -83,7 +107,6 @@
       background: rgba(255, 255, 255, 0.1);
     }
 
-    /* Fade and zoom animation */
     @keyframes fadeZoom {
       0% {
         opacity: 0;
@@ -95,78 +118,18 @@
       }
     }
 
-    /* Trigger fadeZoom on image change */
+    /* Add a class for triggering the animation on image change */
     .fade-animate {
       animation: fadeZoom 1s ease-in-out;
     }
-
-    /* Back button styling */
-    .back-button {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      background-color: transparent;
-      color: white;
-      border: 2px solid white;
-      padding: 10px 15px;
-      border-radius: 8px;
-      font-size: 18px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.3s, background 0.3s;
-      z-index: 20;
-    }
-
-    .back-button:hover {
-      background: rgba(255, 255, 255, 0.2);
-      animation: bounce 0.6s;
-    }
-
-    /* Bounce animation */
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-8px);
-      }
-    }
-
-    /* Mobile Responsive */
-    @media (max-width: 600px) {
-      .nav-button {
-        font-size: 24px;
-        padding: 8px;
-      }
-
-      .prev {
-        left: -40px;
-      }
-
-      .next {
-        right: -40px;
-      }
-
-      .back-button {
-        font-size: 16px;
-        padding: 8px 12px;
-        top: 10px;
-        left: 10px;
-      }
-
-      .slideshow-container {
-        max-width: 95%;
-      }
-
-      .slideshow-image {
-        max-height: 60vh;
-      }
-    }
   </style>
 </head>
-
 <body>
-  <a href="index.html" class="back-button">← Back to Home</a>
+
+  <!-- RABID RABBIT image that links back home -->
+  <a class="home-link" href="index.html">
+    <img class="home-image" src="images/RABID RABBIT.jpeg" alt="Back to Home">
+  </a>
 
   <div class="slideshow-container">
     <button class="nav-button prev" onclick="changeSlide(-1)">&#10094;</button>
@@ -194,10 +157,16 @@
     function changeSlide(direction) {
       currentIndex = (currentIndex + direction + images.length) % images.length;
 
+      // Reset animation by removing and re-adding the class
       slideshow.classList.remove('fade-animate');
+      
+      // Force reflow by accessing the offsetWidth property
       void slideshow.offsetWidth;
+
+      // Add the class back to trigger the animation
       slideshow.classList.add('fade-animate');
 
+      // Update image source and alt text
       slideshow.src = images[currentIndex].src;
       slideshow.alt = images[currentIndex].alt;
     }
