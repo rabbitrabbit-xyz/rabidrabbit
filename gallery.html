@@ -10,59 +10,76 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #000;
+      background: black;
       color: white;
       font-family: Courier, monospace;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      align-items: center;
       overflow-x: hidden;
     }
 
+    /* HEADER STYLES */
     .header {
       position: relative;
       width: 100%;
-      height: 150px; /* smaller header height */
-      background-image: url('images/candy mountains.png');
+      height: 200px;
+      background: url('images/candy mountains.png') no-repeat center center;
       background-size: cover;
-      background-position: top center; /* focus top */
-      background-repeat: no-repeat;
     }
 
-    .home-button {
+    .home-link {
       position: absolute;
       top: 20px;
       left: 20px;
       text-align: center;
-    }
-
-    .home-button img {
-      width: 80px;
-      height: auto;
-      cursor: pointer;
-      border: 2px solid white;
-      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      font-family: Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       transition: transform 0.3s ease;
     }
 
-    .home-button img:hover {
-      transform: scale(1.1);
+    .home-image {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border: 2px solid white;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .home-text {
       margin-top: 5px;
-      font-size: 14px;
-      color: white;
-      font-family: Courier, monospace;
+      font-size: 12px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease, transform 0.4s ease, text-shadow 0.3s ease;
     }
 
+    .home-link:hover .home-text {
+      opacity: 1;
+      transform: translateY(0);
+      text-shadow: 0 0 5px white, 0 0 10px white;
+    }
+
+    .home-link:hover .home-image {
+      transform: rotate(var(--random-rotate)) scale(1.1);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
+
+    /* MAIN SLIDESHOW AREA */
     .slideshow-container {
+      margin-top: 40px;
       position: relative;
       max-width: 80%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 60px auto 0 auto;
     }
 
     .slideshow-image {
@@ -71,6 +88,7 @@
       border: 5px solid white;
       border-radius: 8px;
       animation: fadeZoom 1s ease-in-out;
+      background-color: rgba(0, 0, 0, 0.3);
     }
 
     .nav-button {
@@ -99,7 +117,7 @@
     }
 
     #audio-control {
-      margin: 20px;
+      margin-top: 20px;
       background: none;
       border: 2px solid white;
       border-radius: 50%;
@@ -128,18 +146,19 @@
         transform: scale(1);
       }
     }
+
+    .fade-animate {
+      animation: fadeZoom 1s ease-in-out;
+    }
   </style>
 </head>
 
 <body>
-
   <div class="header">
-    <div class="home-button">
-      <a href="index.html">
-        <img src="images/RABID RABBIT.jpeg" alt="Back to Home">
-      </a>
+    <a class="home-link" href="index.html" id="homeLink">
+      <img class="home-image" src="images/RABID RABBIT.jpeg" alt="Back to Home">
       <div class="home-text">Back to Home</div>
-    </div>
+    </a>
   </div>
 
   <div class="slideshow-container">
@@ -168,9 +187,9 @@
     function changeSlide(direction) {
       currentIndex = (currentIndex + direction + images.length) % images.length;
 
-      slideshow.classList.remove('fadeZoom');
+      slideshow.classList.remove('fade-animate');
       void slideshow.offsetWidth;
-      slideshow.classList.add('fadeZoom');
+      slideshow.classList.add('fade-animate');
 
       slideshow.src = images[currentIndex].src;
       slideshow.alt = images[currentIndex].alt;
@@ -196,7 +215,13 @@
     }).catch(() => {
       button.textContent = "▶";
     });
-  </script>
 
+    // RANDOM ROTATION EFFECT ON HOVER
+    const homeLink = document.getElementById('homeLink');
+    homeLink.addEventListener('mouseover', () => {
+      const randomDegree = (Math.random() * 10 - 5).toFixed(2) + 'deg'; // random between -5deg and 5deg
+      homeLink.style.setProperty('--random-rotate', randomDegree);
+    });
+  </script>
 </body>
 </html>
