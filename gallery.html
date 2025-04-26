@@ -15,29 +15,51 @@
       flex-direction: column;
       align-items: center;
       height: 100vh;
+      justify-content: center;
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 20px;
-      max-width: 1200px;
-      width: 100%;
+    .slideshow-container {
+      position: relative;
+      max-width: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .image {
-      width: 100%;
-      height: auto;
+    .slideshow-image {
+      max-width: 100%;
+      max-height: 80vh;
       border: 5px solid white;
       border-radius: 8px;
     }
 
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 10;
+    }
+
+    .nav-button:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .prev {
+      left: -60px;
+    }
+
+    .next {
+      right: -60px;
+    }
+
     #audio-control {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
+      margin-top: 20px;
       background: none;
       border: 2px solid white;
       border-radius: 50%;
@@ -58,13 +80,10 @@
   </style>
 </head>
 <body>
-  <div class="gallery">
-   <img class="image" src="images/RABID RABBIT.jpeg" alt="Art 1">
-    <img class="image" src="images/Rabid Rabbit Polk.png" alt="Art 2">
-    <img class="image" src="images/Flower.png" alt="Art 3">
-    <img class="image" src="images/Brain Damage 1.png" alt="Art 4">
-    <img class="image" src="images/Brain Damage 2.png" alt="Art 5">
-    <img class="image" src="images/Brain Damage 3.png" alt="Art 6">
+  <div class="slideshow-container">
+    <button class="nav-button prev" onclick="changeSlide(-1)">&#10094;</button>
+    <img id="slideshow" class="slideshow-image" src="images/RABID RABBIT.jpeg" alt="Art 1">
+    <button class="nav-button next" onclick="changeSlide(1)">&#10095;</button>
   </div>
 
   <audio id="background-music" autoplay loop>
@@ -75,6 +94,24 @@
   <button id="audio-control">▶</button>
 
   <script>
+    const images = [
+      { src: "images/RABID RABBIT.jpeg", alt: "Art 1" },
+      { src: "images/Rabid Rabbit Polk.png", alt: "Art 2" },
+      { src: "images/Flower.png", alt: "Art 3" },
+      { src: "images/Brain Damage 1.png", alt: "Art 4" },
+      { src: "images/Brain Damage 2.png", alt: "Art 5" },
+      { src: "images/Brain Damage 3.png", alt: "Art 6" }
+    ];
+
+    let currentIndex = 0;
+    const slideshow = document.getElementById('slideshow');
+
+    function changeSlide(direction) {
+      currentIndex = (currentIndex + direction + images.length) % images.length;
+      slideshow.src = images[currentIndex].src;
+      slideshow.alt = images[currentIndex].alt;
+    }
+
     const music = document.getElementById('background-music');
     const button = document.getElementById('audio-control');
 
@@ -90,7 +127,6 @@
 
     button.addEventListener('click', toggleMusic);
 
-    // Set icon depending on autoplay success
     music.play().then(() => {
       button.textContent = "⏸";
     }).catch(() => {
