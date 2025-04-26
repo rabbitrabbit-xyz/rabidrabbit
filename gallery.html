@@ -79,27 +79,32 @@
     #audio-control:hover {
       background: rgba(255, 255, 255, 0.1);
     }
+
     @keyframes fadeZoom {
-  0% {
-    opacity: 0;
-    transform: scale(1.02);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
+      0% {
+        opacity: 0;
+        transform: scale(1.02);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
-.slideshow-image {
-  animation: fadeZoom 1s ease-in-out;
-}
+    .slideshow-image {
+      animation: fadeZoom 1s ease-in-out;
+    }
 
+    /* Add a class for triggering the animation on image change */
+    .fade-animate {
+      animation: fadeZoom 1s ease-in-out;
+    }
   </style>
 </head>
 <body>
   <div class="slideshow-container">
     <button class="nav-button prev" onclick="changeSlide(-1)">&#10094;</button>
-<img id="slideshow" class="slideshow-image" src="images/Brain Damage 1.png" alt="Art 1">
+    <img id="slideshow" class="slideshow-image" src="images/Brain Damage 1.png" alt="Art 1">
     <button class="nav-button next" onclick="changeSlide(1)">&#10095;</button>
   </div>
 
@@ -121,17 +126,16 @@
     const slideshow = document.getElementById('slideshow');
 
     function changeSlide(direction) {
-  currentIndex = (currentIndex + direction + images.length) % images.length;
+      currentIndex = (currentIndex + direction + images.length) % images.length;
 
-  // Reset animation
-  slideshow.classList.remove('fade-animate');
-  void slideshow.offsetWidth; // Trigger reflow
-  slideshow.classList.add('fade-animate');
+      // Reset animation
+      slideshow.classList.remove('fade-animate');  // Remove existing animation class
+      void slideshow.offsetWidth;  // Trigger reflow to force animation reset
+      slideshow.classList.add('fade-animate');  // Add the animation class back
 
-  slideshow.src = images[currentIndex].src;
-  slideshow.alt = images[currentIndex].alt;
-}
-
+      slideshow.src = images[currentIndex].src;
+      slideshow.alt = images[currentIndex].alt;
+    }
 
     const music = document.getElementById('background-music');
     const button = document.getElementById('audio-control');
