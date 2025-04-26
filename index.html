@@ -14,7 +14,7 @@
       margin: 0;
       padding: 0;
       background-color: white;
-      font-family: 'Courier Prime', monospace; /* Apply Courier Prime */
+      font-family: 'Courier Prime', monospace;
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -24,11 +24,11 @@
     }
 
     .background-image {
-      width: 50%; /* Smaller size */
-      max-width: 600px; /* Maximum size */
+      width: 50%;
+      max-width: 600px;
       height: auto;
       object-fit: cover;
-      margin-bottom: 30px; /* Adjusted spacing */
+      margin-bottom: 30px;
     }
 
     .gallery-title {
@@ -38,7 +38,14 @@
       margin-bottom: 30px;
     }
 
-    .enter-button {
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .nav-button {
       padding: 15px 30px;
       font-size: 20px;
       background-color: black;
@@ -48,16 +55,26 @@
       cursor: pointer;
       text-decoration: none;
       transition: background-color 0.3s;
+      display: inline-block;
     }
 
-    .enter-button:hover {
+    .nav-button:hover {
       background-color: #333;
     }
   </style>
 </head>
 <body>
+
   <img class="background-image" src="images/RABID RABBIT.jpeg" alt="Rabid Rabbit Art">
+  
   <div class="gallery-title">Rabid Rabbit Gallery</div>
-  <a class="enter-button" href="home.html">Enter</a>
+
+  <div class="button-container">
+    <a class="nav-button" href="gallery.html">Art Gallery</a>
+    <a class="nav-button" href="music.html">Music</a>
+    <a class="nav-button" href="home.html">Writing</a>
+    <a class="nav-button" href="about.html">About</a>
+  </div>
+
 </body>
 </html>
