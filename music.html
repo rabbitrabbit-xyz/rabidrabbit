@@ -13,14 +13,18 @@
       color: #fff;
       margin: 0;
       padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       height: 100vh;
-      flex-direction: column;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .content {
+      flex: 1;
       text-align: center;
     }
-    
+
     h1 {
       font-size: 36px;
       margin-bottom: 10px;
@@ -30,49 +34,68 @@
       margin-bottom: 30px;
       font-size: 18px;
     }
-    
+
     .music-links {
       list-style-type: none;
       padding: 0;
     }
-    
+
     .music-links li {
       margin: 15px 0;
     }
-    
+
     .music-links a {
       text-decoration: none;
       color: #fff;
       font-size: 20px;
       transition: color 0.3s ease;
     }
-    
+
     .music-links a:hover {
       color: #ccc;
     }
-    
+
     footer {
       margin-top: 40px;
       font-size: 14px;
       color: #888;
     }
+
+    .image-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .image-container img {
+      max-width: 90%;
+      height: auto;
+    }
   </style>
 </head>
 <body>
 
-  <h1>Music</h1>
-  <p>projects and playlists:</p>
-  
-  <ul class="music-links">
-    <li><a href="https://open.spotify.com/artist/7yhWlaxkJF28CMBSEhsyzR" target="_blank">Jake O'Keefe on Spotify</a></li>
-    <li><a href="https://open.spotify.com/artist/3YhsbYLUIruJIkh9q9aVaP" target="_blank">Miner Pentway on Spotify</a></li>
-    <li><a href="https://open.spotify.com/artist/6jUhapgh2BBUNQa5L9FpYk" target="_blank">Blackwater on Spotify</a></li>
-    <li><a href="https://linktr.ee/blackwatervt" target="_blank">Linktree (Blackwater)</a></li>
-  </ul>
-  
-  <footer>
-    <p>Rabid Rabbit</p>
-  </footer>
-  
+  <div class="content">
+    <h1>My Music</h1>
+    <p>Explore my projects and playlists:</p>
+
+    <ul class="music-links">
+      <li><a href="https://open.spotify.com/artist/7yhWlaxkJF28CMBSEhsyzR" target="_blank">Jake O'Keefe on Spotify</a></li>
+      <li><a href="https://open.spotify.com/artist/3YhsbYLUIruJIkh9q9aVaP" target="_blank">Miner Pentway on Spotify</a></li>
+      <li><a href="https://open.spotify.com/artist/6jUhapgh2BBUNQa5L9FpYk" target="_blank">Blackwater on Spotify</a></li>
+      <li><a href="https://linktr.ee/blackwatervt" target="_blank">Linktree (Blackwater)</a></li>
+    </ul>
+
+    <footer>
+      <p>Created by [Your Name]</p>
+    </footer>
+  </div>
+
+  <div class="image-container">
+    <img src="images/Rabid rabbit siding.png" alt="Rabid Rabbit Siding">
+  </div>
+
 </body>
 </html>
