@@ -5,7 +5,43 @@
     <title>Rabid Rabbit</title>
   </head>
   <body>
-    <h1>Welcome to Rabid Rabbit</h1>
-    <p>Art. Writing. Music. Doodles.</p>
+    <h1>Rabid Rabbit</h1>
+    <p>Art. Writing. Music.</p>
+
+    <div id="slideshow" style="max-width: 600px; margin: auto; text-align: center;">
+  <img id="slide" src="images/RABID RABBIT.JPEG" style="width:100%; max-height:500px; object-fit: contain;">
+  <br>
+  <button onclick="prevSlide()">←</button>
+  <button onclick="nextSlide()">→</button>
+</div>
+
+<script>
+  const images = [
+    "images/RABID RABBIT.JPEG",
+    "images/Rabid Rabbit Polk.png",
+    "images/Brain Damage 1.png",
+    "images/Brain Damage 2.png",
+    "images/Brain Damage 3.png",
+    "images/Flower.png"
+  ];
+
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    const img = document.getElementById("slide");
+    img.src = images[index];
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showSlide(currentIndex);
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showSlide(currentIndex);
+  }
+</script>
+
   </body>
 </html>
