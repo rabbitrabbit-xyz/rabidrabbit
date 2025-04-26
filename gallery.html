@@ -33,6 +33,13 @@
       position: absolute;
       top: 20px;
       left: 20px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .home-image {
@@ -42,9 +49,21 @@
       border: 2px solid white;
       border-radius: 8px;
       transition: transform 0.3s, opacity 0.3s;
+      display: block;
     }
 
-    .home-image:hover {
+    .home-text {
+      margin-top: 5px;
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .home-link:hover .home-text {
+      opacity: 1;
+    }
+
+    .home-link:hover .home-image {
       transform: scale(1.05);
       opacity: 0.8;
     }
@@ -128,9 +147,10 @@
 </head>
 <body>
 
-  <!-- RABID RABBIT image floating in top left -->
+  <!-- Rabid Rabbit Home Link -->
   <a class="home-link" href="index.html">
     <img class="home-image" src="images/RABID RABBIT.jpeg" alt="Back to Home">
+    <div class="home-text">Back to Home</div>
   </a>
 
   <div class="slideshow-container">
