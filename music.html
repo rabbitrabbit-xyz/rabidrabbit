@@ -68,7 +68,30 @@
       transform: translateY(-50%);
       max-height: 80vh;
       opacity: 0.8;
-      pointer-events: none; /* makes sure clicks go through the image */
+      pointer-events: none;
+    }
+
+    .audio-controls {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .audio-controls button {
+      background-color: #fff;
+      color: #000;
+      font-size: 20px;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin: 5px;
+    }
+
+    .audio-controls button:hover {
+      background-color: #ccc;
     }
   </style>
 </head>
@@ -90,7 +113,33 @@
     </footer>
   </div>
 
+  <!-- Audio element -->
+  <audio id="background-music" loop>
+    <source src="saxroadrabbit.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Play/Pause button -->
+  <div class="audio-controls">
+    <button id="playPauseButton" onclick="togglePlayPause()">Play</button>
+  </div>
+
   <img class="floating-image" src="images/Rabid rabbit siding.png" alt="Rabid Rabbit Siding">
+
+  <script>
+    const audio = document.getElementById('background-music');
+    const playPauseButton = document.getElementById('playPauseButton');
+
+    function togglePlayPause() {
+      if (audio.paused) {
+        audio.play();
+        playPauseButton.textContent = 'Pause';
+      } else {
+        audio.pause();
+        playPauseButton.textContent = 'Play';
+      }
+    }
+  </script>
 
 </body>
 </html>
