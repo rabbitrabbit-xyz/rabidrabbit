@@ -20,6 +20,7 @@
       align-items: center;
       flex-direction: column;
       text-align: center;
+      position: relative; /* Set relative position for absolute children */
     }
 
     .background-image {
@@ -52,10 +53,33 @@
     .enter-button:hover {
       background-color: #333;
     }
+
+    /* Siding Image Styles */
+    .left-siding, .right-siding {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%); /* Vertically center */
+      width: 100px; /* Adjust the size */
+      height: auto;
+    }
+
+    .left-siding {
+      left: 0;
+    }
+
+    .right-siding {
+      right: 0;
+    }
+
   </style>
 </head>
 <body>
   <img class="background-image" src="images/RABID RABBIT.jpeg" alt="Rabid Rabbit Art">
+  
+  <!-- Siding images on the sides -->
+  <img class="left-siding" src="images/Rabid rabbit siding.png" alt="Left Siding">
+  <img class="right-siding" src="images/Rabid rabbit siding.png" alt="Right Siding">
+
   <div class="gallery-title">Rabid Rabbit Gallery</div>
   <a class="enter-button" href="gallery.html">Enter</a>
 </body>
