@@ -18,15 +18,7 @@
       align-items: center;
       height: 100vh;
       justify-content: center;
-      opacity: 0;
-      animation: pageFadeIn 1.5s ease forwards;
-      position: relative;
-    }
-
-    @keyframes pageFadeIn {
-      to {
-        opacity: 1;
-      }
+      overflow: hidden;
     }
 
     .home-link {
@@ -40,16 +32,18 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: transform 0.3s ease;
     }
 
     .home-image {
-      width: 80px;
-      height: auto;
-      cursor: pointer;
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
       border: 2px solid white;
-      border-radius: 8px;
-      transition: transform 0.3s, opacity 0.3s;
-      display: block;
+      border-radius: 50%; /* Makes it a circle */
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .home-text {
@@ -57,17 +51,18 @@
       font-size: 12px;
       opacity: 0;
       transform: translateY(10px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
+      transition: opacity 0.4s ease, transform 0.4s ease, text-shadow 0.3s ease;
     }
 
     .home-link:hover .home-text {
       opacity: 1;
       transform: translateY(0);
+      text-shadow: 0 0 5px white, 0 0 10px white;
     }
 
     .home-link:hover .home-image {
-      transform: scale(1.05);
-      opacity: 0.8;
+      transform: scale(1.1) rotate(-3deg);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
     }
 
     .slideshow-container {
@@ -125,7 +120,6 @@
       align-items: center;
       cursor: pointer;
       transition: background 0.3s;
-      font-family: Courier, monospace;
     }
 
     #audio-control:hover {
@@ -148,9 +142,8 @@
     }
   </style>
 </head>
-<body>
 
-  <!-- Rabid Rabbit Home Link -->
+<body>
   <a class="home-link" href="index.html">
     <img class="home-image" src="images/RABID RABBIT.jpeg" alt="Back to Home">
     <div class="home-text">Back to Home</div>
@@ -182,10 +175,16 @@
     function changeSlide(direction) {
       currentIndex = (currentIndex + direction + images.length) % images.length;
 
+      // Reset animation by removing and re-adding the class
       slideshow.classList.remove('fade-animate');
+      
+      // Force reflow by accessing the offsetWidth property
       void slideshow.offsetWidth;
+
+      // Add the class back to trigger the animation
       slideshow.classList.add('fade-animate');
 
+      // Update image source and alt text
       slideshow.src = images[currentIndex].src;
       slideshow.alt = images[currentIndex].alt;
     }
