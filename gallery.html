@@ -128,11 +128,16 @@
     function changeSlide(direction) {
       currentIndex = (currentIndex + direction + images.length) % images.length;
 
-      // Reset animation
-      slideshow.classList.remove('fade-animate');  // Remove existing animation class
-      void slideshow.offsetWidth;  // Trigger reflow to force animation reset
-      slideshow.classList.add('fade-animate');  // Add the animation class back
+      // Reset animation by removing and re-adding the class
+      slideshow.classList.remove('fade-animate');
+      
+      // Force reflow by accessing the offsetWidth property
+      void slideshow.offsetWidth;
 
+      // Add the class back to trigger the animation
+      slideshow.classList.add('fade-animate');
+
+      // Update image source and alt text
       slideshow.src = images[currentIndex].src;
       slideshow.alt = images[currentIndex].alt;
     }
