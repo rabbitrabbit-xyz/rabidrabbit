@@ -1,79 +1,30 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Rabid Rabbit</title>
-  </head>
-<audio id="background-music" autoplay loop>
-  <source src="audio/Rabbit-theme.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
-<button onclick="toggleMusic()" style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); padding: 10px; background: transparent; border: none; cursor: pointer; font-size: 24px;">
-  ▶️
-</button>
-
-<script>
-  const music = document.getElementById('background-music');
-  const button = document.querySelector("button");
-
-  // Try to play the music as soon as the page loads
-  window.onload = () => {
-    music.play().catch((error) => {
-      console.log("Autoplay blocked by browser, waiting for user interaction...");
-    });
-  };
-
-  // Toggle play/pause when the button is clicked
-  function toggleMusic() {
-    if (music.paused) {
-      music.play();
-      button.innerHTML = "⏸️";  // Change to pause icon
-    } else {
-      music.pause();
-      button.innerHTML = "▶️";  // Change to play icon
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Rabid Rabbit</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #333;
+      color: white;
     }
-  }
-</script>
-
-  <body>
-    <h1>Rabid Rabbit</h1>
-    <p>Art. Writing. Music.</p>
-
-    <div id="slideshow" style="max-width: 600px; margin: auto; text-align: center;">
-  <img id="slide" src="images/RABID RABBIT.JPEG" style="width:100%; max-height:500px; object-fit: contain;">
-  <br>
-  <button onclick="prevSlide()">←</button>
-  <button onclick="nextSlide()">→</button>
-</div>
-
-<script>
-  const images = [
-    "images/RABID RABBIT.jpeg",
-    "images/Rabid Rabbit Polk.png",
-    "images/Brain Damage 1.png",
-    "images/Brain Damage 2.png",
-    "images/Brain Damage 3.png",
-    "images/Flower.png"
-  ];
-
-  let currentIndex = 0;
-
-  function showSlide(index) {
-    const img = document.getElementById("slide");
-    img.src = images[index];
-  }
-
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % images.length;
-    showSlide(currentIndex);
-  }
-
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    showSlide(currentIndex);
-  }
-</script>
-
-  </body>
+    #enter-button {
+      font-size: 24px;
+      padding: 20px 40px;
+      background-color: transparent;
+      border: 2px solid white;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button id="enter-button" onclick="window.location.href='gallery.html'">Enter</button>
+</body>
 </html>
