@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Music</title>
+  <link rel="icon" href="rabbitico.ico" type="image/x-icon">
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #2c3e50;
+      color: #ecf0f1;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 30px;
+      font-size: 18px;
+    }
+    
+    .music-links {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .music-links li {
+      margin: 15px 0;
+    }
+    
+    .music-links a {
+      text-decoration: none;
+      color: #ecf0f1;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+    
+    .music-links a:hover {
+      color: #f39c12;
+    }
+    
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #95a5a6;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Music</h1>
+  <p>Explore my projects and playlists:</p>
+  
+  <ul class="music-links">
+    <li><a href="https://open.spotify.com/artist/7yhWlaxkJF28CMBSEhsyzR" target="_blank">Rabid Rabbit on Spotify</a></li>
+    <li><a href="https://open.spotify.com/artist/3YhsbYLUIruJIkh9q9aVaP" target="_blank">Jack Grooby on Spotify</a></li>
+    <li><a href="https://open.spotify.com/artist/6jUhapgh2BBUNQa5L9FpYk" target="_blank">Blackwater on Spotify</a></li>
+    <li><a href="https://linktr.ee/blackwatervt" target="_blank">Linktree (Blackwater)</a></li>
+  </ul>
+  
+  <footer>
+    <p>Created by [Your Name]</p>
+  </footer>
+  
+</body>
+</html>
