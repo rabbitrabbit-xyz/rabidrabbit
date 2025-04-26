@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome to Rabid Rabbit</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link to your shared CSS file if you have one -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: white;
+      font-family: 'Courier Prime', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Header Image */
+    .header {
+      width: 100%;
+      height: 50vh; /* Adjust based on how big you want the header image */
+      background-image: url('images/RABID RABBIT HEADER.png'); /* Updated to your header image */
+      background-size: cover;
+      background-position: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-top: 20px;
+      text-align: center;
+      font-family: 'Courier Prime', Courier, monospace;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    .button {
+      background-color: #fff;
+      color: #000;
+      font-family: 'Courier Prime', Courier, monospace;
+      padding: 15px 30px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #555;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Image -->
+  <div class="header"></div>
+
+  <h1>Welcome to Rabid Rabbit</h1>
+
+  <!-- Option Buttons -->
+  <div class="button-container">
+    <a href="gallery.html">
+      <button class="button">Art Gallery</button>
+    </a>
+    <a href="writing.html">
+      <button class="button">Writing</button>
+    </a>
+    <a href="music.html">
+      <button class="button">Music</button>
+    </a>
+    <!-- Add more buttons if you have other sections -->
+  </div>
+</body>
+</html>
