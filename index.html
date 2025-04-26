@@ -8,20 +8,27 @@
     body {
       margin: 0;
       padding: 0;
-      background: url("images/RABID RABBIT.jpeg") no-repeat center center fixed;
-      background-size: cover;
+      background-color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       font-family: Arial, sans-serif;
+      flex-direction: column;
+    }
+
+    .background-image {
+      width: 50vw;
+      max-width: 90%;
+      height: auto;
     }
 
     .enter-button {
-      padding: 20px 40px;
-      font-size: 24px;
-      background-color: rgba(255, 255, 255, 0.1);
-      border: 2px solid white;
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 20px;
+      background-color: black;
+      border: none;
       color: white;
       border-radius: 8px;
       cursor: pointer;
@@ -30,11 +37,12 @@
     }
 
     .enter-button:hover {
-      background-color: rgba(255, 255, 255, 0.3);
+      background-color: #333;
     }
   </style>
 </head>
 <body>
+  <img class="background-image" src="images/RABID RABBIT.jpeg" alt="Rabid Rabbit Art">
   <a class="enter-button" href="gallery.html">Enter</a>
 </body>
 </html>
