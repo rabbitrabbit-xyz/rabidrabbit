@@ -13,16 +13,28 @@
       color: #fff;
       margin: 0;
       padding: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      text-align: center;
       position: relative;
     }
 
+    .header-image {
+      width: 100%;
+      max-height: 250px;
+      object-fit: cover;
+    }
+
     .content {
+      flex: 1;
       z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
     }
 
     h1 {
@@ -72,7 +84,7 @@
     }
 
     .audio-controls {
-      position: absolute;
+      position: fixed;
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
@@ -96,6 +108,9 @@
   </style>
 </head>
 <body>
+
+  <!-- Header image -->
+  <img class="header-image" src="images/rabidrabbitheader2.png" alt="Rabid Rabbit Header">
 
   <div class="content">
     <h1>Music</h1>
@@ -124,6 +139,7 @@
     <button id="playPauseButton" onclick="togglePlayPause()">Play</button>
   </div>
 
+  <!-- Floating image -->
   <img class="floating-image" src="images/Rabid rabbit siding.png" alt="Rabid Rabbit Siding">
 
   <script>
