@@ -190,7 +190,7 @@
   </div>
 
   <!-- Button (as an image) to show the slideshow -->
-  <img src="images/BDC-removebg-preview.png" id="showSlideshowButton" alt="Brain Damage Collection Button" style="cursor: pointer; width: 200px; height: auto;">
+  <img src="images/BDC-removebg-preview.png" id="showSlideshowButton" alt="Brain Damage Collection Button" style="cursor: pointer; width: 800px; height: auto;">
 
   <!-- Slideshow container, initially hidden -->
   <div class="slideshow-container">
@@ -251,6 +251,7 @@
     });
 
     showSlideshowButton.addEventListener('click', function() {
+      showSlideshowButton.style.display = 'none'; // Hide the button
       slideshowContainer.style.display = 'flex'; // Show the slideshow when the button is clicked
     });
 
