@@ -196,6 +196,23 @@
     #showSlideshowButton:hover {
       color: #800080; /* Change hover color to purple */
     }
+
+    /* Back button style */
+    #backButton {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      display: none; /* Initially hidden */
+    }
+
+    #backButton:hover {
+      color: #800080; /* Hover color */
+    }
   </style>
 </head>
 
@@ -215,6 +232,8 @@
     <button class="nav-button prev" onclick="changeSlide(-1)">&#10094;</button>
     <img id="slideshow" class="slideshow-image" src="images/Brain Damage 1.png" alt="Art 1">
     <button class="nav-button next" onclick="changeSlide(1)">&#10095;</button>
+    <!-- Back button to close the slideshow -->
+    <button id="backButton" onclick="closeSlideshow()">←</button>
   </div>
 
   <audio id="background-music" autoplay loop>
@@ -235,6 +254,7 @@
     const slideshow = document.getElementById('slideshow');
     const slideshowContainer = document.querySelector('.slideshow-container');
     const showSlideshowButton = document.getElementById('showSlideshowButton');
+    const backButton = document.getElementById('backButton');
 
     function changeSlide(direction) {
       currentIndex = (currentIndex + direction + images.length) % images.length;
@@ -245,6 +265,11 @@
 
       slideshow.src = images[currentIndex].src;
       slideshow.alt = images[currentIndex].alt;
+    }
+
+    function closeSlideshow() {
+      slideshowContainer.style.display = 'none'; // Hide slideshow
+      showSlideshowButton.style.display = 'inline-block'; // Show button
     }
 
     const music = document.getElementById('background-music');
@@ -271,6 +296,7 @@
     showSlideshowButton.addEventListener('click', function() {
       showSlideshowButton.style.display = 'none'; // Hide the button
       slideshowContainer.style.display = 'flex'; // Show the slideshow when the button is clicked
+      backButton.style.display = 'inline-block'; // Show the back button
     });
 
     const homeLink = document.getElementById('homeLink');
