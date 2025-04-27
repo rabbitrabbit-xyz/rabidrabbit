@@ -149,10 +149,9 @@
     }
 
     .audio-controls button {
-      background-color: transparent;
+      background-color: #444;
       border: 2px solid #fff;
       color: #fff;
-      font-size: 30px;
       padding: 15px;
       border-radius: 50%;
       cursor: pointer;
@@ -163,6 +162,17 @@
       background-color: #fff;
       color: #000;
       transform: scale(1.1);
+    }
+
+    .audio-controls svg {
+      width: 25px;
+      height: 25px;
+      fill: #fff;
+      transition: fill 0.3s ease;
+    }
+
+    .audio-controls:hover svg {
+      fill: #000;
     }
 
     /* Media Query for iPhone */
@@ -209,22 +219,31 @@
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Play/Pause button -->
+  <!-- Play/Pause button with SVG -->
   <div class="audio-controls">
-    <button id="playPauseButton" onclick="togglePlayPause()">⏸️</button>
+    <button id="playPauseButton" onclick="togglePlayPause()">
+      <!-- Play Icon (triangle) -->
+      <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <!-- Pause Icon (two bars) -->
+      <svg id="pauseIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+    </button>
   </div>
 
   <script>
     const audio = document.getElementById('background-music');
     const playPauseButton = document.getElementById('playPauseButton');
+    const playIcon = document.getElementById('playIcon');
+    const pauseIcon = document.getElementById('pauseIcon');
 
     function togglePlayPause() {
       if (audio.paused) {
         audio.play();
-        playPauseButton.textContent = '⏸️'; // Change to "Pause" symbol
+        playIcon.style.display = 'none'; // Hide play icon
+        pauseIcon.style.display = 'block'; // Show pause icon
       } else {
         audio.pause();
-        playPauseButton.textContent = '▶️'; // Change to "Play" symbol
+        playIcon.style.display = 'block'; // Show play icon
+        pauseIcon.style.display = 'none'; // Hide pause icon
       }
     }
 
