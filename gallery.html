@@ -197,17 +197,18 @@
       color: #800080; /* Change hover color to purple */
     }
 
-    /* Back button style (positioned below the header) */
+    /* Back button style (positioned outside the slideshow) */
     #backButton {
-      position: absolute;
-      top: 10px; /* Move it below the header */
-      left: 40px;
+      position: fixed;
+      top: 140px; /* Below the header */
+      left: 20px;
       background: none;
       border: none;
       color: white;
       font-size: 40px;
       cursor: pointer;
       display: none; /* Initially hidden */
+      z-index: 20;
     }
 
     #backButton:hover {
@@ -232,9 +233,10 @@
     <button class="nav-button prev" onclick="changeSlide(-1)">&#10094;</button>
     <img id="slideshow" class="slideshow-image" src="images/Brain Damage 1.png" alt="Art 1">
     <button class="nav-button next" onclick="changeSlide(1)">&#10095;</button>
-    <!-- Back button to close the slideshow -->
-    <button id="backButton" onclick="closeSlideshow()">←</button>
   </div>
+
+  <!-- Back button to close the slideshow -->
+  <button id="backButton" onclick="closeSlideshow()">←</button>
 
   <audio id="background-music" autoplay loop>
     <source src="audio/19281211_The_Big_Rock_Candy_Mountains-Hobo_Jack_Turner.mp3" type="audio/mpeg">
@@ -270,6 +272,7 @@
     function closeSlideshow() {
       slideshowContainer.style.display = 'none'; // Hide slideshow
       showSlideshowButton.style.display = 'inline-block'; // Show button
+      backButton.style.display = 'none'; // Hide back button
     }
 
     const music = document.getElementById('background-music');
