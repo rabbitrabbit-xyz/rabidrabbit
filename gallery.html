@@ -32,6 +32,15 @@
       animation: scrollBackground 20s linear infinite;
     }
 
+    @keyframes scrollBackground {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 100% 0;
+      }
+    }
+
     .home-link {
       position: absolute;
       top: 15px;
@@ -307,14 +316,13 @@
 
     music.play().then(() => {
       button.textContent = "⏸";
-    }).catch(() => {
-      button.textContent = "▶";
     });
 
-    showSlideshowButton.addEventListener('click', function() {
-      showSlideshowButton.style.display = 'none';
-      slideshowContainer.style.display = 'block';
+    showSlideshowButton.addEventListener('click', () => {
+      currentCollection = 'brainDamage';
       changeSlide(0);
+      slideshowContainer.style.display = 'block';
+      showSlideshowButton.style.display = 'none';
       backButton.style.display = 'block';
     });
 
