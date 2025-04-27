@@ -135,6 +135,7 @@
       cursor: pointer;
       padding: 10px;
       z-index: 10;
+      display: none; /* Hide arrows by default */
     }
 
     .nav-button:hover {
@@ -287,6 +288,8 @@
     const slideshow = document.getElementById('slideshow');
     const slideshowTitle = document.getElementById('slideshowTitle');
     const backButton = document.getElementById('backButton');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
 
     function changeSlide(step) {
       currentIndex += step;
@@ -317,6 +320,10 @@
     slideshow.style.display = 'none';
     slideshowTitle.style.display = 'none';
 
+    // Initially hide arrows
+    prevButton.style.display = 'none';
+    nextButton.style.display = 'none';
+
     // Show Brain Damage collection when clicked
     document.getElementById('brainDamageBtn').addEventListener('click', () => {
       currentCollection = 'brainDamage';
@@ -326,6 +333,8 @@
       slideshow.style.display = 'block'; // Show slideshow
       slideshowTitle.textContent = 'Brain Damage Collection';
       slideshowTitle.classList.add('show');
+      prevButton.style.display = 'block';
+      nextButton.style.display = 'block';
       backButton.style.display = 'block';
     });
 
@@ -338,6 +347,8 @@
       slideshow.style.display = 'block'; // Show slideshow
       slideshowTitle.textContent = 'Nature Collection';
       slideshowTitle.classList.add('show');
+      prevButton.style.display = 'block';
+      nextButton.style.display = 'block';
       backButton.style.display = 'block';
     });
 
@@ -350,6 +361,8 @@
       slideshow.style.display = 'block'; // Show slideshow
       slideshowTitle.textContent = 'Indigo Collection';
       slideshowTitle.classList.add('show');
+      prevButton.style.display = 'block';
+      nextButton.style.display = 'block';
       backButton.style.display = 'block';
     });
 
@@ -358,6 +371,8 @@
       backButton.style.display = 'none';
       slideshow.style.display = 'none';
       slideshowTitle.classList.remove('show');
+      prevButton.style.display = 'none';
+      nextButton.style.display = 'none';
     });
   </script>
 </body>
