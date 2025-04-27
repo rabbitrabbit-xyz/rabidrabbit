@@ -154,27 +154,28 @@
        right: -60px;
      }
  
-    #audio-control {
+    /* Fix the play button size and ensure it's circular */
+#audio-control {
   margin-top: 40px;
   margin-bottom: 20px;
   background: none;
   border: 2px solid white;
   border-radius: 50%;
-  width: 60px; /* Adjusted to make the button a consistent size */
-  height: 60px; /* Adjusted to make the button a consistent size */
+  width: 60px; /* Set fixed width */
+  height: 60px; /* Set fixed height */
   color: white;
-  font-size: 30px; /* Increased font size for better visibility */
+  font-size: 32px; /* Adjusted font size */
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   transition: background 0.3s;
-  line-height: 1; /* Ensures proper vertical alignment of the play symbol */
 }
 
 #audio-control:hover {
   background: rgba(255, 255, 255, 0.1);
 }
+
  
      @keyframes fadeZoom {
        0% {
