@@ -275,7 +275,12 @@
       ]
     };
 
-    let currentIndex = 0;
+    let currentIndex = {
+      'brainDamage': 0,
+      'nature': 0,
+      'indigo': 0
+    };
+
     let currentCollection = 'brainDamage';
     const slideshow = document.getElementById('slideshow');
     const slideshowContainer = document.querySelector('.slideshow-container');
@@ -283,40 +288,21 @@
     const backButton = document.getElementById('backButton');
 
     function changeSlide(direction) {
-      currentIndex = (currentIndex + direction + images[currentCollection].length) % images[currentCollection].length;
+      currentIndex[currentCollection] = (currentIndex[currentCollection] + direction + images[currentCollection].length) % images[currentCollection].length;
 
       slideshow.classList.remove('fade-animate');
       void slideshow.offsetWidth;
       slideshow.classList.add('fade-animate');
 
-      slideshow.src = images[currentCollection][currentIndex].src;
-      slideshow.alt = images[currentCollection][currentIndex].alt;
+      slideshow.src = images[currentCollection][currentIndex[currentCollection]].src;
+      slideshow.alt = images[currentCollection][currentIndex[currentCollection]].alt;
     }
 
     function closeSlideshow() {
       slideshowContainer.style.display = 'none';
-      showSlideshowButton.style.display = 'inline-block';
+      showSlideshowButton.style.display = 'block';
       backButton.style.display = 'none';
     }
-
-    const music = document.getElementById('background-music');
-    const button = document.getElementById('audio-control');
-
-    function toggleMusic() {
-      if (music.paused) {
-        music.play();
-        button.textContent = "⏸";
-      } else {
-        music.pause();
-        button.textContent = "▶";
-      }
-    }
-
-    button.addEventListener('click', toggleMusic);
-
-    music.play().then(() => {
-      button.textContent = "⏸";
-    });
 
     showSlideshowButton.addEventListener('click', () => {
       currentCollection = 'brainDamage';
@@ -340,6 +326,17 @@
       slideshowContainer.style.display = 'block';
       showSlideshowButton.style.display = 'none';
       backButton.style.display = 'block';
+    });
+
+    document.getElementById('audio-control').addEventListener('click', function () {
+      const audio = document.getElementById('background-music');
+      if (audio.paused) {
+        audio.play();
+        this.textContent = '⏸';
+      } else {
+        audio.pause();
+        this.textContent = '▶';
+      }
     });
   </script>
 </body>
