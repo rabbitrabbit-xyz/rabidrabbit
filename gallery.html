@@ -19,16 +19,6 @@
       overflow-x: hidden;
     }
 
-    /* HEADER STYLES */
-    @keyframes scrollBackground {
-      0% {
-        background-position: 100% center;
-      }
-      100% {
-        background-position: -100% center;
-      }
-    }
-
     .header {
       position: relative;
       width: 100%;
@@ -87,7 +77,6 @@
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
     }
 
-    /* MAIN SLIDESHOW AREA */
     .slideshow-container {
       margin-top: 40px;
       position: relative;
@@ -95,7 +84,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      display: none; /* Initially hidden */
+      display: none;
     }
 
     .slideshow-image {
@@ -167,7 +156,6 @@
       animation: fadeZoom 1s ease-in-out;
     }
 
-    /* Media Query for iPhone */
     @media (max-width: 768px) {
       .header {
         height: 100px;
@@ -179,7 +167,6 @@
       }
     }
 
-    /* New button style */
     #showSlideshowButton {
       font-family: Courier, monospace;
       font-size: 48px;
@@ -194,10 +181,9 @@
     }
 
     #showSlideshowButton:hover {
-      color: #800080; /* Change hover color to purple */
+      color: #800080;
     }
 
-    /* New links below the main button */
     .collection-link {
       font-family: Courier, monospace;
       font-size: 24px;
@@ -212,25 +198,24 @@
     }
 
     .collection-link:hover {
-      color: #800080; /* Purple hover */
+      color: #800080;
     }
 
-    /* Back button style (positioned outside the slideshow) */
     #backButton {
       position: fixed;
-      top: 140px; /* Below the header */
+      top: 140px;
       left: 20px;
       background: none;
       border: none;
       color: white;
       font-size: 40px;
       cursor: pointer;
-      display: none; /* Initially hidden */
+      display: none;
       z-index: 20;
     }
 
     #backButton:hover {
-      color: #800080; /* Hover color */
+      color: #800080;
     }
   </style>
 </head>
@@ -243,19 +228,16 @@
     </a>
   </div>
 
-  <!-- Text buttons to show different slideshows -->
   <button id="showSlideshowButton">Brain Damage Collection</button>
   <a class="collection-link" href="#" id="natureCollectionLink">Nature Collection</a>
   <a class="collection-link" href="#" id="indigoCollectionLink">Indigo Collection</a>
 
-  <!-- Slideshow container, initially hidden -->
   <div class="slideshow-container">
     <button class="nav-button prev" onclick="changeSlide(-1)">&#10094;</button>
     <img id="slideshow" class="slideshow-image" src="images/Brain Damage 1.png" alt="Art 1">
     <button class="nav-button next" onclick="changeSlide(1)">&#10095;</button>
   </div>
 
-  <!-- Back button to close the slideshow -->
   <button id="backButton" onclick="closeSlideshow()">←</button>
 
   <audio id="background-music" autoplay loop>
@@ -285,7 +267,7 @@
     };
 
     let currentIndex = 0;
-    let currentCollection = 'brainDamage'; // Default to Brain Damage Collection
+    let currentCollection = 'brainDamage';
     const slideshow = document.getElementById('slideshow');
     const slideshowContainer = document.querySelector('.slideshow-container');
     const showSlideshowButton = document.getElementById('showSlideshowButton');
@@ -303,9 +285,9 @@
     }
 
     function closeSlideshow() {
-      slideshowContainer.style.display = 'none'; // Hide slideshow
-      showSlideshowButton.style.display = 'inline-block'; // Show button
-      backButton.style.display = 'none'; // Hide back button
+      slideshowContainer.style.display = 'none';
+      showSlideshowButton.style.display = 'inline-block';
+      backButton.style.display = 'none';
     }
 
     const music = document.getElementById('background-music');
@@ -330,9 +312,27 @@
     });
 
     showSlideshowButton.addEventListener('click', function() {
-      showSlideshowButton.style.display = 'none'; // Hide the button
-      slideshowContainer.style.display = 'flex'; // Show the slideshow when the button is clicked
-      backButton.style.display = 'inline-block'; // Show the back button
+      showSlideshowButton.style.display = 'none';
+      slideshowContainer.style.display = 'block';
+      changeSlide(0);
+      backButton.style.display = 'block';
     });
 
-    document.getElementById('natureCollectionLink
+    document.getElementById('natureCollectionLink').addEventListener('click', () => {
+      currentCollection = 'nature';
+      changeSlide(0);
+      slideshowContainer.style.display = 'block';
+      showSlideshowButton.style.display = 'none';
+      backButton.style.display = 'block';
+    });
+
+    document.getElementById('indigoCollectionLink').addEventListener('click', () => {
+      currentCollection = 'indigo';
+      changeSlide(0);
+      slideshowContainer.style.display = 'block';
+      showSlideshowButton.style.display = 'none';
+      backButton.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
