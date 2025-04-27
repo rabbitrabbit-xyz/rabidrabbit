@@ -17,6 +17,8 @@
       flex-direction: column;
       align-items: center;
       overflow-x: hidden;
+      height: 100vh;
+      justify-content: flex-start;
     }
 
     /* HEADER STYLES */
@@ -151,7 +153,10 @@
     }
 
     #audio-control {
-      margin-top: 20px;
+      position: absolute;
+      bottom: 20px; /* Position at the bottom */
+      left: 50%;
+      transform: translateX(-50%);
       background: none;
       border: 2px solid white;
       border-radius: 50%;
