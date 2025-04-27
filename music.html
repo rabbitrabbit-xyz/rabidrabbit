@@ -73,16 +73,6 @@
       color: #888;
     }
 
-    .floating-image {
-      position: fixed;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      max-height: 80vh;
-      opacity: 0.8;
-      pointer-events: none;
-    }
-
     .audio-controls {
       position: fixed;
       bottom: 20px;
@@ -138,9 +128,6 @@
   <div class="audio-controls">
     <button id="playPauseButton" onclick="togglePlayPause()">Play</button>
   </div>
-
-  <!-- Floating image -->
-  <img class="floating-image" src="images/Rabid rabbit siding.png" alt="Rabid Rabbit Siding">
 
   <script>
     const audio = document.getElementById('background-music');
