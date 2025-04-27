@@ -197,6 +197,24 @@
       color: #800080; /* Change hover color to purple */
     }
 
+    /* New links below the main button */
+    .collection-link {
+      font-family: Courier, monospace;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+      margin-top: 20px;
+      border: none;
+      background: none;
+      text-align: center;
+      display: block;
+      transition: color 0.3s ease;
+    }
+
+    .collection-link:hover {
+      color: #800080; /* Purple hover */
+    }
+
     /* Back button style (positioned outside the slideshow) */
     #backButton {
       position: fixed;
@@ -225,8 +243,10 @@
     </a>
   </div>
 
-  <!-- Text button to show the slideshow -->
+  <!-- Text buttons to show different slideshows -->
   <button id="showSlideshowButton">Brain Damage Collection</button>
+  <a class="collection-link" href="#" id="natureCollectionLink">Nature Collection</a>
+  <a class="collection-link" href="#" id="indigoCollectionLink">Indigo Collection</a>
 
   <!-- Slideshow container, initially hidden -->
   <div class="slideshow-container">
@@ -246,27 +266,40 @@
   <button id="audio-control">▶</button>
 
   <script>
-    const images = [
-      { src: "images/Brain Damage 1.png", alt: "Art 1" },
-      { src: "images/Brain Damage 2.png", alt: "Art 2" },
-      { src: "images/Brain Damage 3.png", alt: "Art 3" }
-    ];
+    const images = {
+      'brainDamage': [
+        { src: "images/Brain Damage 1.png", alt: "Art 1" },
+        { src: "images/Brain Damage 2.png", alt: "Art 2" },
+        { src: "images/Brain Damage 3.png", alt: "Art 3" }
+      ],
+      'nature': [
+        { src: "images/Nature 1.png", alt: "Nature 1" },
+        { src: "images/Nature 2.png", alt: "Nature 2" },
+        { src: "images/Nature 3.png", alt: "Nature 3" }
+      ],
+      'indigo': [
+        { src: "images/Indigo 1.png", alt: "Indigo 1" },
+        { src: "images/Indigo 2.png", alt: "Indigo 2" },
+        { src: "images/Indigo 3.png", alt: "Indigo 3" }
+      ]
+    };
 
     let currentIndex = 0;
+    let currentCollection = 'brainDamage'; // Default to Brain Damage Collection
     const slideshow = document.getElementById('slideshow');
     const slideshowContainer = document.querySelector('.slideshow-container');
     const showSlideshowButton = document.getElementById('showSlideshowButton');
     const backButton = document.getElementById('backButton');
 
     function changeSlide(direction) {
-      currentIndex = (currentIndex + direction + images.length) % images.length;
+      currentIndex = (currentIndex + direction + images[currentCollection].length) % images[currentCollection].length;
 
       slideshow.classList.remove('fade-animate');
       void slideshow.offsetWidth;
       slideshow.classList.add('fade-animate');
 
-      slideshow.src = images[currentIndex].src;
-      slideshow.alt = images[currentIndex].alt;
+      slideshow.src = images[currentCollection][currentIndex].src;
+      slideshow.alt = images[currentCollection][currentIndex].alt;
     }
 
     function closeSlideshow() {
@@ -302,11 +335,4 @@
       backButton.style.display = 'inline-block'; // Show the back button
     });
 
-    const homeLink = document.getElementById('homeLink');
-    homeLink.addEventListener('mouseover', () => {
-      const randomDegree = (Math.random() * 10 - 5).toFixed(2) + 'deg';
-      homeLink.style.setProperty('--random-rotate', randomDegree);
-    });
-  </script>
-</body>
-</html>
+    document.getElementById('natureCollectionLink
