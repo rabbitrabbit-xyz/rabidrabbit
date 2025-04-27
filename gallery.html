@@ -1,387 +1,389 @@
+
 <!DOCTYPE html>
- <html lang="en">
- <head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-   <title>Rabid Rabbit Gallery</title>
-   <link rel="icon" href="rabbitico.ico" type="image/x-icon">
- 
-   <style>
-     body {
-       margin: 0;
-       padding: 0;
-       background: black;
-       color: white;
-       font-family: Courier, monospace;
-       display: flex;
-       flex-direction: column;
-       align-items: center;
-       overflow-x: hidden;
-       height: 100vh;
-       justify-content: flex-start;
-     }
- 
-     /* HEADER STYLES */
-     @keyframes scrollBackground {
-       0% {
-         background-position: 100% center;
-       }
-       100% {
-         background-position: -100% center;
-       }
-     }
- 
-     .header {
-       position: fixed; /* Make header fixed at the top */
-       top: 0;
-       width: 100%;
-       height: 120px;
-       overflow: hidden;
-       border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-       box-sizing: border-box;
-       background: url('images/rabidrabbitheader2.png') repeat-x center center;
-       background-size: auto 100%;
-       animation: scrollBackground 20s linear infinite;
-       z-index: 10; /* Ensure header stays above other content */
-     }
- 
-     .home-link {
-       position: absolute;
-       top: 15px;
-       left: 20px;
-       text-align: center;
-       text-decoration: none;
-       color: white;
-       font-family: Courier, monospace;
-       display: flex;
-       flex-direction: column;
-       align-items: center;
-       z-index: 2;
-       transition: transform 0.3s ease;
-     }
- 
-     .home-image {
-       width: 70px;
-       height: 70px;
-       object-fit: cover;
-       border: 2px solid white;
-       border-radius: 50%;
-       box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-       cursor: pointer;
-       transition: transform 0.3s ease, box-shadow 0.3s ease;
-     }
- 
-     .home-text {
-       margin-top: 5px;
-       font-size: 12px;
-       opacity: 0;
-       transform: translateY(10px);
-       transition: opacity 0.4s ease, transform 0.4s ease, text-shadow 0.3s ease;
-     }
- 
-     .home-link:hover .home-text {
-       opacity: 1;
-       transform: translateY(0);
-       text-shadow: 0 0 5px white, 0 0 10px white;
-     }
- 
-     .home-link:hover .home-image {
-       transform: rotate(10deg) scale(1.1); /* Rotation added back */
-       box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-     }
- 
-     /* MAIN SLIDESHOW AREA */
-     .slideshow-container {
-       margin-top: 160px; /* Adjusted to ensure content is below the fixed header */
-       position: relative;
-       max-width: 80%;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       flex-direction: column;
-     }
- 
-     .slideshow-title {
-       font-family: 'Courier Prime', Courier, monospace;
-       font-size: 28px;
-       text-transform: uppercase;
-       letter-spacing: 5px;
-       color: white;
-       margin-bottom: 20px;
-       opacity: 0; /* Hidden by default */
-       transform: translateY(-10px);
-       transition: opacity 0.4s ease, transform 0.4s ease;
-     }
- 
-     .slideshow-title.show {
-       opacity: 1;
-       transform: translateY(0);
-     }
- 
-     .slideshow-image {
-       max-width: 100%;
-       max-height: 80vh;
-       border: 5px solid white;
-       border-radius: 8px;
-       animation: fadeZoom 1s ease-in-out;
-       background-color: rgba(0, 0, 0, 0.3);
-     }
- 
-     .nav-button {
-       position: absolute;
-       top: 50%;
-       transform: translateY(-50%);
-       background: rgba(255, 255, 255, 0.2);
-       border: none;
-       color: white;
-       font-size: 30px;
-       cursor: pointer;
-       padding: 10px;
-       z-index: 10;
-       display: none; /* Hide arrows by default */
-     }
- 
-     .nav-button:hover {
-       background: rgba(255, 255, 255, 0.4);
-     }
- 
-     .prev {
-       left: -60px;
-     }
- 
-     .next {
-       right: -60px;
-     }
- 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rabid Rabbit Gallery</title>
+  <link rel="icon" href="rabbitico.ico" type="image/x-icon">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: white;
+      font-family: Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      height: 100vh;
+      justify-content: flex-start;
+    }
+
+    /* HEADER STYLES */
+    @keyframes scrollBackground {
+      0% {
+        background-position: 100% center;
+      }
+      100% {
+        background-position: -100% center;
+      }
+    }
+
+    .header {
+      position: fixed; /* Make header fixed at the top */
+      top: 0;
+      width: 100%;
+      height: 120px;
+      overflow: hidden;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      box-sizing: border-box;
+      background: url('images/rabidrabbitheader2.png') repeat-x center center;
+      background-size: auto 100%;
+      animation: scrollBackground 20s linear infinite;
+      z-index: 10; /* Ensure header stays above other content */
+    }
+
+    .home-link {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      font-family: Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+      transition: transform 0.3s ease;
+    }
+
+    .home-image {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border: 2px solid white;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .home-text {
+      margin-top: 5px;
+      font-size: 12px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease, transform 0.4s ease, text-shadow 0.3s ease;
+    }
+
+    .home-link:hover .home-text {
+      opacity: 1;
+      transform: translateY(0);
+      text-shadow: 0 0 5px white, 0 0 10px white;
+    }
+
+    .home-link:hover .home-image {
+      transform: rotate(10deg) scale(1.1); /* Rotation added back */
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
+
+    /* MAIN SLIDESHOW AREA */
+    .slideshow-container {
+      margin-top: 160px; /* Adjusted to ensure content is below the fixed header */
+      position: relative;
+      max-width: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .slideshow-title {
+      font-family: 'Courier Prime', Courier, monospace;
+      font-size: 28px;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: white;
+      margin-bottom: 20px;
+      opacity: 0; /* Hidden by default */
+      transform: translateY(-10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .slideshow-title.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slideshow-image {
+      max-width: 100%;
+      max-height: 80vh;
+      border: 5px solid white;
+      border-radius: 8px;
+      animation: fadeZoom 1s ease-in-out;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 10;
+      display: none; /* Hide arrows by default */
+    }
+
+    .nav-button:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .prev {
+      left: -60px;
+    }
+
+    .next {
+      right: -60px;
+    }
+
     /* Fix the play button size and ensure it's circular */
-#audio-control {
-  margin-top: 40px;
-  margin-bottom: 20px;
-  background: none;
-  border: 2px solid white;
-  border-radius: 50%;
-  width: 60px; /* Set fixed width */
-  height: 60px; /* Set fixed height */
-  color: white;
-  font-size: 32px; /* Adjusted font size */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: background 0.3s;
-}
+    #audio-control {
+      margin-top: 40px;
+      margin-bottom: 20px;
+      background: none;
+      border: 2px solid white;
+      border-radius: 50%;
+      width: 70px; /* Slightly larger for better proportions */
+      height: 70px;
+      color: white;
+      font-size: 28px; /* Adjusted font size */
+      line-height: 0; /* Ensures no extra space is added */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
 
-#audio-control:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
+    #audio-control:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: scale(1.1); /* Subtle hover effect */
+    }
 
- 
-     @keyframes fadeZoom {
-       0% {
-         opacity: 0;
-         transform: scale(1.02);
-       }
-       100% {
-         opacity: 1;
-         transform: scale(1);
-       }
-     }
- 
-     .fade-animate {
-       animation: fadeZoom 1s ease-in-out;
-     }
- 
-     /* Media Query for iPhone */
-     @media (max-width: 768px) {
-       .header {
-         height: 100px;
-       }
- 
-       .home-link {
-         top: 10px;
-         left: 10px;
-       }
-     }
- 
-     /* Style for Collection Buttons */
-     .collection-button {
-       margin-top: 20px;
-       padding: 20px 40px;
-       background-color: white;
-       color: black;
-       font-size: 24px; /* Increased font size */
-       font-family: Courier, monospace; /* Courier font */
-       border: none;
-       cursor: pointer;
-       text-transform: uppercase;
-       transition: background-color 0.3s, color 0.3s;
-     }
- 
-     .collection-button:hover {
-       background-color: #800080;
-       color: white;
-     }
- 
-     /* Style for the back arrow */
-     .back-button {
-       position: absolute;
-       top: 135px;
-       left: 20px;
-       font-size: 30px;
-       color: white;
-       background: none;
-       border: none;
-       cursor: pointer;
-       z-index: 20;
-       display: none;
-     }
- 
-     .back-button:hover {
-       color: #800080;
-     }
-   </style>
- </head>
- 
- <body>
-   <div class="header">
-     <a class="home-link" href="index.html" id="homeLink">
-       <img class="home-image" src="images/RABID RABBIT.jpeg" alt="Back to Home">
-       <div class="home-text">Back to Home</div>
-     </a>
-   </div>
- 
-   <div class="slideshow-container">
-     <div id="slideshowTitle" class="slideshow-title"></div> <!-- Title is hidden by default -->
-     <button class="nav-button prev" onclick="changeSlide(-1)">&#10094;</button>
-     <img id="slideshow" class="slideshow-image" src="" alt="Art">
-     <button class="nav-button next" onclick="changeSlide(1)">&#10095;</button>
-   </div>
- 
-   <audio id="background-music" autoplay loop>
-     <source src="audio/19281211_The_Big_Rock_Candy_Mountains-Hobo_Jack_Turner.mp3" type="audio/mpeg">
-     Your browser does not support the audio element.
-   </audio>
- 
-   <button class="collection-button" id="brainDamageBtn">Brain Damage Collection</button>
-   <button class="collection-button" id="natureCollectionBtn">Nature Collection</button>
-   <button class="collection-button" id="indigoCollectionBtn">Indigo Collection</button>
+    @keyframes fadeZoom {
+      0% {
+        opacity: 0;
+        transform: scale(1.02);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
-   <button id="audio-control">▶</button>
- 
-   <button class="back-button" id="backButton">&#8592; Back</button>
- 
-   <script>
-     const images = {
-       brainDamage: [
-         { src: "images/Brain Damage 1.png", alt: "Art 1" },
-         { src: "images/Brain Damage 2.png", alt: "Art 2" },
-         { src: "images/Brain Damage 3.png", alt: "Art 3" }
-       ],
-       nature: [
-         { src: "images/Nature 1.png", alt: "Nature 1" },
-         { src: "images/Nature 2.png", alt: "Nature 2" },
-         { src: "images/Nature 3.png", alt: "Nature 3" }
-       ],
-       indigo: [
-         { src: "images/Indigo 1.png", alt: "Indigo 1" },
-         { src: "images/Indigo 2.png", alt: "Indigo 2" },
-         { src: "images/Indigo 3.png", alt: "Indigo 3" }
-       ]
-     };
- 
-     let currentCollection = '';
-     let currentIndex = 0;
- 
-     const slideshow = document.getElementById('slideshow');
-     const slideshowTitle = document.getElementById('slideshowTitle');
-     const backButton = document.getElementById('backButton');
-     const prevButton = document.querySelector('.prev');
-     const nextButton = document.querySelector('.next');
- 
-     function changeSlide(step) {
-       currentIndex += step;
-       if (currentIndex >= images[currentCollection].length) {
-         currentIndex = 0;
-       } else if (currentIndex < 0) {
-         currentIndex = images[currentCollection].length - 1;
-       }
-       slideshow.src = images[currentCollection][currentIndex].src;
-       slideshow.alt = images[currentCollection][currentIndex].alt;
-     }
- 
-     function toggleMusic() {
-       const music = document.getElementById('background-music');
-       const button = document.getElementById('audio-control');
-       if (music.paused) {
-         music.play();
-         button.innerHTML = '❚❚';
-       } else {
-         music.pause();
-         button.innerHTML = '▶';
-       }
-     }
- 
-     document.getElementById('audio-control').addEventListener('click', toggleMusic);
- 
-     // Initially hide slideshow and title
-     slideshow.style.display = 'none';
-     slideshowTitle.style.display = 'none';
- 
-     // Initially hide arrows
-     prevButton.style.display = 'none';
-     nextButton.style.display = 'none';
- 
-     // Show Brain Damage collection when clicked
-     document.getElementById('brainDamageBtn').addEventListener('click', () => {
-       currentCollection = 'brainDamage';
-       currentIndex = 0;
-       slideshow.src = images[currentCollection][currentIndex].src;
-       slideshow.alt = images[currentCollection][currentIndex].alt;
-       slideshow.style.display = 'block'; // Show slideshow
-       slideshowTitle.textContent = 'Brain Damage Collection';
-       slideshowTitle.classList.add('show');
-       prevButton.style.display = 'block';
-       nextButton.style.display = 'block';
-       backButton.style.display = 'block';
-     });
- 
-     // Show Nature collection when clicked
-     document.getElementById('natureCollectionBtn').addEventListener('click', () => {
-       currentCollection = 'nature';
-       currentIndex = 0;
-       slideshow.src = images[currentCollection][currentIndex].src;
-       slideshow.alt = images[currentCollection][currentIndex].alt;
-       slideshow.style.display = 'block'; // Show slideshow
-       slideshowTitle.textContent = 'Nature Collection';
-       slideshowTitle.classList.add('show');
-       prevButton.style.display = 'block';
-       nextButton.style.display = 'block';
-       backButton.style.display = 'block';
-     });
- 
-     // Show Indigo collection when clicked
-     document.getElementById('indigoCollectionBtn').addEventListener('click', () => {
-       currentCollection = 'indigo';
-       currentIndex = 0;
-       slideshow.src = images[currentCollection][currentIndex].src;
-       slideshow.alt = images[currentCollection][currentIndex].alt;
-       slideshow.style.display = 'block'; // Show slideshow
-       slideshowTitle.textContent = 'Indigo Collection';
-       slideshowTitle.classList.add('show');
-       prevButton.style.display = 'block';
-       nextButton.style.display = 'block';
-       backButton.style.display = 'block';
-     });
- 
-     // Hide slideshow and title when back button is clicked
-     backButton.addEventListener('click', () => {
-       backButton.style.display = 'none';
-       slideshow.style.display = 'none';
-       slideshowTitle.classList.remove('show');
-       prevButton.style.display = 'none';
-       nextButton.style.display = 'none';
-     });
-   </script>
- </body>
- </html>
+    .fade-animate {
+      animation: fadeZoom 1s ease-in-out;
+    }
+
+    /* Media Query for iPhone */
+    @media (max-width: 768px) {
+      .header {
+        height: 100px;
+      }
+
+      .home-link {
+        top: 10px;
+        left: 10px;
+      }
+    }
+
+    /* Style for Collection Buttons */
+    .collection-button {
+      margin-top: 20px;
+      padding: 20px 40px;
+      background-color: white;
+      color: black;
+      font-size: 24px; /* Increased font size */
+      font-family: Courier, monospace; /* Courier font */
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .collection-button:hover {
+      background-color: #800080;
+      color: white;
+    }
+
+    /* Style for the back arrow */
+    .back-button {
+      position: absolute;
+      top: 135px;
+      left: 20px;
+      font-size: 30px;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 20;
+      display: none;
+    }
+
+    .back-button:hover {
+      color: #800080;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <a class="home-link" href="index.html" id="homeLink">
+      <img class="home-image" src="images/RABID RABBIT.jpeg" alt="Back to Home">
+      <div class="home-text">Back to Home</div>
+    </a>
+  </div>
+
+  <div class="slideshow-container">
+    <div id="slideshowTitle" class="slideshow-title"></div> <!-- Title is hidden by default -->
+    <button class="nav-button prev" onclick="changeSlide(-1)">&#10094;</button>
+    <img id="slideshow" class="slideshow-image" src="" alt="Art">
+    <button class="nav-button next" onclick="changeSlide(1)">&#10095;</button>
+  </div>
+
+  <audio id="background-music" autoplay loop>
+    <source src="audio/19281211_The_Big_Rock_Candy_Mountains-Hobo_Jack_Turner.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <button class="collection-button" id="brainDamageBtn">Brain Damage Collection</button>
+  <button class="collection-button" id="natureCollectionBtn">Nature Collection</button>
+  <button class="collection-button" id="indigoCollectionBtn">Indigo Collection</button>
+
+  <button id="audio-control">▶</button>
+
+  <button class="back-button" id="backButton">&#8592; Back</button>
+
+  <script>
+    const images = {
+      brainDamage: [
+        { src: "images/Brain Damage 1.png", alt: "Art 1" },
+        { src: "images/Brain Damage 2.png", alt: "Art 2" },
+        { src: "images/Brain Damage 3.png", alt: "Art 3" }
+      ],
+      nature: [
+        { src: "images/Nature 1.png", alt: "Nature 1" },
+        { src: "images/Nature 2.png", alt: "Nature 2" },
+        { src: "images/Nature 3.png", alt: "Nature 3" }
+      ],
+      indigo: [
+        { src: "images/Indigo 1.png", alt: "Indigo 1" },
+        { src: "images/Indigo 2.png", alt: "Indigo 2" },
+        { src: "images/Indigo 3.png", alt: "Indigo 3" }
+      ]
+    };
+
+    let currentCollection = '';
+    let currentIndex = 0;
+
+    const slideshow = document.getElementById('slideshow');
+    const slideshowTitle = document.getElementById('slideshowTitle');
+    const backButton = document.getElementById('backButton');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+
+    function changeSlide(step) {
+      currentIndex += step;
+      if (currentIndex >= images[currentCollection].length) {
+        currentIndex = 0;
+      } else if (currentIndex < 0) {
+        currentIndex = images[currentCollection].length - 1;
+      }
+      slideshow.src = images[currentCollection][currentIndex].src;
+      slideshow.alt = images[currentCollection][currentIndex].alt;
+    }
+
+    function toggleMusic() {
+      const music = document.getElementById('background-music');
+      const button = document.getElementById('audio-control');
+      if (music.paused) {
+        music.play();
+        button.innerHTML = '❚❚';
+      } else {
+        music.pause();
+        button.innerHTML = '▶';
+      }
+    }
+
+    document.getElementById('audio-control').addEventListener('click', toggleMusic);
+
+    // Initially hide slideshow and title
+    slideshow.style.display = 'none';
+    slideshowTitle.style.display = 'none';
+
+    // Initially hide arrows
+    prevButton.style.display = 'none';
+    nextButton.style.display = 'none';
+
+    // Show Brain Damage collection when clicked
+    document.getElementById('brainDamageBtn').addEventListener('click', () => {
+      currentCollection = 'brainDamage';
+      currentIndex = 0;
+      slideshow.src = images[currentCollection][currentIndex].src;
+      slideshow.alt = images[currentCollection][currentIndex].alt;
+      slideshow.style.display = 'block'; // Show slideshow
+      slideshowTitle.textContent = 'Brain Damage Collection';
+      slideshowTitle.classList.add('show');
+      prevButton.style.display = 'block';
+      nextButton.style.display = 'block';
+      backButton.style.display = 'block';
+    });
+
+    // Show Nature collection when clicked
+    document.getElementById('natureCollectionBtn').addEventListener('click', () => {
+      currentCollection = 'nature';
+      currentIndex = 0;
+      slideshow.src = images[currentCollection][currentIndex].src;
+      slideshow.alt = images[currentCollection][currentIndex].alt;
+      slideshow.style.display = 'block'; // Show slideshow
+      slideshowTitle.textContent = 'Nature Collection';
+      slideshowTitle.classList.add('show');
+      prevButton.style.display = 'block';
+      nextButton.style.display = 'block';
+      backButton.style.display = 'block';
+    });
+
+    // Show Indigo collection when clicked
+    document.getElementById('indigoCollectionBtn').addEventListener('click', () => {
+      currentCollection = 'indigo';
+      currentIndex = 0;
+      slideshow.src = images[currentCollection][currentIndex].src;
+      slideshow.alt = images[currentCollection][currentIndex].alt;
+      slideshow.style.display = 'block'; // Show slideshow
+      slideshowTitle.textContent = 'Indigo Collection';
+      slideshowTitle.classList.add('show');
+      prevButton.style.display = 'block';
+      nextButton.style.display = 'block';
+      backButton.style.display = 'block';
+    });
+
+    // Hide slideshow and title when back button is clicked
+    backButton.addEventListener('click', () => {
+      backButton.style.display = 'none';
+      slideshow.style.display = 'none';
+      slideshowTitle.classList.remove('show');
+      prevButton.style.display = 'none';
+      nextButton.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
