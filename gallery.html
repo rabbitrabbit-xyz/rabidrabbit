@@ -156,28 +156,31 @@
     }
 
     /* Fix the play button size and ensure it's circular */
-    #audio-control {
-      margin-top: 40px;
-      margin-bottom: 20px;
-      background: none;
-      border: 2px solid white;
-      border-radius: 50%;
-      width: 70px; /* Slightly larger for better proportions */
-      height: 70px;
-      color: white;
-      font-size: 28px; /* Adjusted font size */
-      line-height: 0; /* Ensures no extra space is added */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-    }
+   #audio-control {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  background: none;
+  border: 2px solid white;
+  border-radius: 50%;
+  width: 70px; /* Fixed width */
+  height: 70px; /* Fixed height */
+  color: white;
+  font-size: 28px; /* Icon size */
+  line-height: 0; /* Prevents extra spacing */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  flex-shrink: 0; /* Prevent shrinking */
+  box-sizing: border-box; /* Ensures padding and border are included in size */
+  position: relative; /* Isolated positioning */
+}
 
-    #audio-control:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: scale(1.1); /* Subtle hover effect */
-    }
+#audio-control:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1); /* Subtle hover effect */
+}
 
     @keyframes fadeZoom {
       0% {
