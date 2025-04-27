@@ -105,7 +105,7 @@
       letter-spacing: 5px;
       color: white;
       margin-bottom: 20px;
-      opacity: 0;
+      opacity: 0; /* Hidden by default */
       transform: translateY(-10px);
       transition: opacity 0.4s ease, transform 0.4s ease;
     }
@@ -243,9 +243,9 @@
   </div>
 
   <div class="slideshow-container">
-    <div id="slideshowTitle" class="slideshow-title">Brain Damage Collection</div>
+    <div id="slideshowTitle" class="slideshow-title"></div> <!-- Title is hidden by default -->
     <button class="nav-button prev" onclick="changeSlide(-1)">&#10094;</button>
-    <img id="slideshow" class="slideshow-image" src="images/Brain Damage 1.png" alt="Art 1">
+    <img id="slideshow" class="slideshow-image" src="" alt="Art">
     <button class="nav-button next" onclick="changeSlide(1)">&#10095;</button>
   </div>
 
@@ -281,17 +281,20 @@
       ]
     };
 
+    let currentCollection = '';
     let currentIndex = 0;
-    let currentCollection = 'brainDamage';
+
     const slideshow = document.getElementById('slideshow');
     const slideshowTitle = document.getElementById('slideshowTitle');
     const backButton = document.getElementById('backButton');
 
-    function changeSlide(direction) {
-      currentIndex = (currentIndex + direction + images[currentCollection].length) % images[currentCollection].length;
-      slideshow.classList.remove('fade-animate');
-      void slideshow.offsetWidth;
-      slideshow.classList.add('fade-animate');
+    function changeSlide(step) {
+      currentIndex += step;
+      if (currentIndex >= images[currentCollection].length) {
+        currentIndex = 0;
+      } else if (currentIndex < 0) {
+        currentIndex = images[currentCollection].length - 1;
+      }
       slideshow.src = images[currentCollection][currentIndex].src;
       slideshow.alt = images[currentCollection][currentIndex].alt;
     }
@@ -310,40 +313,50 @@
 
     document.getElementById('audio-control').addEventListener('click', toggleMusic);
 
+    // Initially hide slideshow and title
+    slideshow.style.display = 'none';
+    slideshowTitle.style.display = 'none';
+
+    // Show Brain Damage collection when clicked
     document.getElementById('brainDamageBtn').addEventListener('click', () => {
       currentCollection = 'brainDamage';
       currentIndex = 0;
       slideshow.src = images[currentCollection][currentIndex].src;
       slideshow.alt = images[currentCollection][currentIndex].alt;
+      slideshow.style.display = 'block'; // Show slideshow
       slideshowTitle.textContent = 'Brain Damage Collection';
       slideshowTitle.classList.add('show');
       backButton.style.display = 'block';
     });
 
+    // Show Nature collection when clicked
     document.getElementById('natureCollectionBtn').addEventListener('click', () => {
       currentCollection = 'nature';
       currentIndex = 0;
       slideshow.src = images[currentCollection][currentIndex].src;
       slideshow.alt = images[currentCollection][currentIndex].alt;
+      slideshow.style.display = 'block'; // Show slideshow
       slideshowTitle.textContent = 'Nature Collection';
       slideshowTitle.classList.add('show');
       backButton.style.display = 'block';
     });
 
+    // Show Indigo collection when clicked
     document.getElementById('indigoCollectionBtn').addEventListener('click', () => {
       currentCollection = 'indigo';
       currentIndex = 0;
       slideshow.src = images[currentCollection][currentIndex].src;
       slideshow.alt = images[currentCollection][currentIndex].alt;
+      slideshow.style.display = 'block'; // Show slideshow
       slideshowTitle.textContent = 'Indigo Collection';
       slideshowTitle.classList.add('show');
       backButton.style.display = 'block';
     });
 
+    // Hide slideshow and title when back button is clicked
     backButton.addEventListener('click', () => {
       backButton.style.display = 'none';
-      slideshow.src = images[currentCollection][0].src;
-      slideshow.alt = images[currentCollection][0].alt;
+      slideshow.style.display = 'none';
       slideshowTitle.classList.remove('show');
     });
   </script>
