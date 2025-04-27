@@ -178,6 +178,24 @@
         left: 10px;
       }
     }
+
+    /* New button style */
+    #showSlideshowButton {
+      font-family: Courier, monospace;
+      font-size: 48px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      margin-top: 50px;
+      border: none;
+      background: none;
+      text-align: center;
+      transition: color 0.3s ease;
+    }
+
+    #showSlideshowButton:hover {
+      color: #ffcc00;
+    }
   </style>
 </head>
 
@@ -189,8 +207,8 @@
     </a>
   </div>
 
-  <!-- Button (as an image) to show the slideshow -->
-  <img src="images/BDC-removebg-preview.png" id="showSlideshowButton" alt="Brain Damage Collection Button" style="cursor: pointer; width: 800px; height: auto;">
+  <!-- Text button to show the slideshow -->
+  <button id="showSlideshowButton">Brain Damage Collection</button>
 
   <!-- Slideshow container, initially hidden -->
   <div class="slideshow-container">
