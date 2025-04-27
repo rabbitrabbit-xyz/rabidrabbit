@@ -95,6 +95,24 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
+    }
+
+    .slideshow-title {
+      font-family: 'Courier Prime', Courier, monospace;
+      font-size: 28px;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: white;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .slideshow-title.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .slideshow-image {
@@ -225,6 +243,7 @@
   </div>
 
   <div class="slideshow-container">
+    <div id="slideshowTitle" class="slideshow-title">Brain Damage Collection</div>
     <button class="nav-button prev" onclick="changeSlide(-1)">&#10094;</button>
     <img id="slideshow" class="slideshow-image" src="images/Brain Damage 1.png" alt="Art 1">
     <button class="nav-button next" onclick="changeSlide(1)">&#10095;</button>
@@ -265,6 +284,7 @@
     let currentIndex = 0;
     let currentCollection = 'brainDamage';
     const slideshow = document.getElementById('slideshow');
+    const slideshowTitle = document.getElementById('slideshowTitle');
     const backButton = document.getElementById('backButton');
 
     function changeSlide(direction) {
@@ -281,10 +301,10 @@
       const button = document.getElementById('audio-control');
       if (music.paused) {
         music.play();
-        button.textContent = "⏸";
+        button.innerHTML = '❚❚';
       } else {
         music.pause();
-        button.textContent = "▶";
+        button.innerHTML = '▶';
       }
     }
 
@@ -295,6 +315,8 @@
       currentIndex = 0;
       slideshow.src = images[currentCollection][currentIndex].src;
       slideshow.alt = images[currentCollection][currentIndex].alt;
+      slideshowTitle.textContent = 'Brain Damage Collection';
+      slideshowTitle.classList.add('show');
       backButton.style.display = 'block';
     });
 
@@ -303,6 +325,8 @@
       currentIndex = 0;
       slideshow.src = images[currentCollection][currentIndex].src;
       slideshow.alt = images[currentCollection][currentIndex].alt;
+      slideshowTitle.textContent = 'Nature Collection';
+      slideshowTitle.classList.add('show');
       backButton.style.display = 'block';
     });
 
@@ -311,6 +335,8 @@
       currentIndex = 0;
       slideshow.src = images[currentCollection][currentIndex].src;
       slideshow.alt = images[currentCollection][currentIndex].alt;
+      slideshowTitle.textContent = 'Indigo Collection';
+      slideshowTitle.classList.add('show');
       backButton.style.display = 'block';
     });
 
@@ -318,6 +344,7 @@
       backButton.style.display = 'none';
       slideshow.src = images[currentCollection][0].src;
       slideshow.alt = images[currentCollection][0].alt;
+      slideshowTitle.classList.remove('show');
     });
   </script>
 </body>
