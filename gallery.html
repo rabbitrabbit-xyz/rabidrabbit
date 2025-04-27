@@ -32,7 +32,7 @@
     }
 
     .header {
-      position: fixed; /* Make header fixed at the top */
+      position: fixed;
       top: 0;
       width: 100%;
       height: 120px;
@@ -43,7 +43,7 @@
       background: url('images/rabidrabbitheader2.png') repeat-x center center;
       background-size: auto 100%;
       animation: scrollBackground 20s linear infinite;
-      z-index: 10; /* Ensure header stays above other content */
+      z-index: 10;
     }
 
     .home-link {
@@ -87,13 +87,13 @@
     }
 
     .home-link:hover .home-image {
-      transform: rotate(10deg) scale(1.1); /* Rotation added back */
+      transform: rotate(10deg) scale(1.1);
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
     }
 
     /* MAIN SLIDESHOW AREA */
     .slideshow-container {
-      margin-top: 160px; /* Adjusted to ensure content is below the fixed header */
+      margin-top: 160px;
       position: relative;
       max-width: 80%;
       display: flex;
@@ -109,7 +109,7 @@
       letter-spacing: 5px;
       color: white;
       margin-bottom: 20px;
-      opacity: 0; /* Hidden by default */
+      opacity: 0;
       transform: translateY(-10px);
       transition: opacity 0.4s ease, transform 0.4s ease;
     }
@@ -124,7 +124,6 @@
       max-height: 80vh;
       border: 5px solid white;
       border-radius: 8px;
-      animation: fadeZoom 1s ease-in-out;
       background-color: rgba(0, 0, 0, 0.3);
     }
 
@@ -139,7 +138,7 @@
       cursor: pointer;
       padding: 10px;
       z-index: 10;
-      display: none; /* Hide arrows by default */
+      display: none;
     }
 
     .nav-button:hover {
@@ -169,26 +168,14 @@
       animation: fadeZoom 1s ease-in-out;
     }
 
-    /* Media Query for iPhone */
-    @media (max-width: 768px) {
-      .header {
-        height: 100px;
-      }
-
-      .home-link {
-        top: 10px;
-        left: 10px;
-      }
-    }
-
     /* Style for Collection Buttons */
     .collection-button {
       margin-top: 20px;
       padding: 20px 40px;
       background-color: white;
       color: black;
-      font-size: 24px; /* Increased font size */
-      font-family: Courier, monospace; /* Courier font */
+      font-size: 24px;
+      font-family: Courier, monospace;
       border: none;
       cursor: pointer;
       text-transform: uppercase;
@@ -198,24 +185,6 @@
     .collection-button:hover {
       background-color: #800080;
       color: white;
-    }
-
-    /* Style for the back arrow */
-    .back-button {
-      position: absolute;
-      top: 135px;
-      left: 20px;
-      font-size: 30px;
-      color: white;
-      background: none;
-      border: none;
-      cursor: pointer;
-      z-index: 20;
-      display: none;
-    }
-
-    .back-button:hover {
-      color: #800080;
     }
 
     .audio-controls {
@@ -253,11 +222,6 @@
       fill: #fff;
       transition: fill 0.3s ease;
     }
-
-    .audio-controls:hover svg {
-      fill: #fff;
-    }
-
   </style>
 </head>
 
@@ -297,12 +261,84 @@
   </div>
 
   <script>
+    const images = {
+      brainDamage: [
+        { src: "images/Brain Damage 1.png", alt: "Art 1" },
+        { src: "images/Brain Damage 2.png", alt: "Art 2" },
+        { src: "images/Brain Damage 3.png", alt: "Art 3" }
+      ],
+      nature: [
+        { src: "images/Nature 1.png", alt: "Nature 1" },
+        { src: "images/Nature 2.png", alt: "Nature 2" },
+        { src: "images/Nature 3.png", alt: "Nature 3" }
+      ],
+      indigo: [
+        { src: "images/Indigo 1.png", alt: "Indigo 1" },
+        { src: "images/Indigo 2.png", alt: "Indigo 2" },
+        { src: "images/Indigo 3.png", alt: "Indigo 3" }
+      ]
+    };
+
+    let currentCollection = '';
+    let currentIndex = 0;
+
+    const slideshow = document.getElementById('slideshow');
+    const slideshowTitle = document.getElementById('slideshowTitle');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+
+    function changeSlide(step) {
+      currentIndex += step;
+      if (currentIndex >= images[currentCollection].length) {
+        currentIndex = 0;
+      } else if (currentIndex < 0) {
+        currentIndex = images[currentCollection].length - 1;
+      }
+      slideshow.src = images[currentCollection][currentIndex].src;
+      slideshow.alt = images[currentCollection][currentIndex].alt;
+    }
+
+    document.getElementById('brainDamageBtn').addEventListener('click', () => {
+      currentCollection = 'brainDamage';
+      currentIndex = 0;
+      slideshow.src = images[currentCollection][currentIndex].src;
+      slideshow.alt = images[currentCollection][currentIndex].alt;
+      slideshow.style.display = 'block';
+      slideshowTitle.textContent = 'Brain Damage Collection';
+      slideshowTitle.classList.add('show');
+      prevButton.style.display = 'block';
+      nextButton.style.display = 'block';
+    });
+
+    document.getElementById('natureCollectionBtn').addEventListener('click', () => {
+      currentCollection = 'nature';
+      currentIndex = 0;
+      slideshow.src = images[currentCollection][currentIndex].src;
+      slideshow.alt = images[currentCollection][currentIndex].alt;
+      slideshow.style.display = 'block';
+      slideshowTitle.textContent = 'Nature Collection';
+      slideshowTitle.classList.add('show');
+      prevButton.style.display = 'block';
+      nextButton.style.display = 'block';
+    });
+
+    document.getElementById('indigoCollectionBtn').addEventListener('click', () => {
+      currentCollection = 'indigo';
+      currentIndex = 0;
+      slideshow.src = images[currentCollection][currentIndex].src;
+      slideshow.alt = images[currentCollection][currentIndex].alt;
+      slideshow.style.display = 'block';
+      slideshowTitle.textContent = 'Indigo Collection';
+      slideshowTitle.classList.add('show');
+      prevButton.style.display = 'block';
+      nextButton.style.display = 'block';
+    });
+
     const audio = document.getElementById('background-music');
     const playPauseButton = document.getElementById('playPauseButton');
     const playIcon = document.getElementById('playIcon');
     const pauseIcon = document.getElementById('pauseIcon');
 
-    // Ensure music plays as soon as the page loads, and show the pause icon
     window.addEventListener('load', () => {
       audio.play();
       playIcon.style.display = 'none';
