@@ -223,9 +223,13 @@
   <div class="audio-controls">
     <button id="playPauseButton" onclick="togglePlayPause()">
       <!-- Play Icon (triangle) -->
-      <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
       <!-- Pause Icon (two bars) -->
-      <svg id="pauseIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+      <svg id="pauseIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M6 5h4v14H6zm8 0h4v14h-4z"/>
+      </svg>
     </button>
   </div>
 
@@ -234,6 +238,13 @@
     const playPauseButton = document.getElementById('playPauseButton');
     const playIcon = document.getElementById('playIcon');
     const pauseIcon = document.getElementById('pauseIcon');
+
+    // Ensure music plays as soon as the page loads, and show the pause icon
+    window.addEventListener('load', () => {
+      audio.play(); // Start playing automatically
+      playIcon.style.display = 'none'; // Hide play icon
+      pauseIcon.style.display = 'block'; // Show pause icon
+    });
 
     function togglePlayPause() {
       if (audio.paused) {
