@@ -87,14 +87,15 @@
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
     }
 
-    /* HIDE SLIDESHOW BY DEFAULT */
+    /* MAIN SLIDESHOW AREA */
     .slideshow-container {
       margin-top: 40px;
       position: relative;
       max-width: 80%;
-      display: none;
+      display: flex;
       align-items: center;
       justify-content: center;
+      display: none; /* Initially hidden */
     }
 
     .slideshow-image {
@@ -188,10 +189,11 @@
     </a>
   </div>
 
-  <!-- Button to Access Slideshow -->
-  <button id="showSlideshowBtn">Brain Damage Collection</button>
+  <!-- Button (as an image) to show the slideshow -->
+  <img src="images/BDC-removebg-preview.png" id="showSlideshowButton" alt="Brain Damage Collection Button" style="cursor: pointer; width: 200px; height: auto;">
 
-  <div class="slideshow-container" id="slideshowContainer">
+  <!-- Slideshow container, initially hidden -->
+  <div class="slideshow-container">
     <button class="nav-button prev" onclick="changeSlide(-1)">&#10094;</button>
     <img id="slideshow" class="slideshow-image" src="images/Brain Damage 1.png" alt="Art 1">
     <button class="nav-button next" onclick="changeSlide(1)">&#10095;</button>
@@ -213,6 +215,8 @@
 
     let currentIndex = 0;
     const slideshow = document.getElementById('slideshow');
+    const slideshowContainer = document.querySelector('.slideshow-container');
+    const showSlideshowButton = document.getElementById('showSlideshowButton');
 
     function changeSlide(direction) {
       currentIndex = (currentIndex + direction + images.length) % images.length;
@@ -246,19 +250,14 @@
       button.textContent = "▶";
     });
 
+    showSlideshowButton.addEventListener('click', function() {
+      slideshowContainer.style.display = 'flex'; // Show the slideshow when the button is clicked
+    });
+
     const homeLink = document.getElementById('homeLink');
     homeLink.addEventListener('mouseover', () => {
       const randomDegree = (Math.random() * 10 - 5).toFixed(2) + 'deg';
       homeLink.style.setProperty('--random-rotate', randomDegree);
-    });
-
-    // Show the slideshow when button is clicked
-    const showSlideshowBtn = document.getElementById('showSlideshowBtn');
-    const slideshowContainer = document.getElementById('slideshowContainer');
-
-    showSlideshowBtn.addEventListener('click', () => {
-      slideshowContainer.style.display = 'flex';
-      showSlideshowBtn.style.display = 'none'; // Hide the button after clicking
     });
   </script>
 </body>
