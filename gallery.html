@@ -329,6 +329,9 @@
 
     document.getElementById('audio-control').addEventListener('click', toggleMusic);
 
+    // Update the play button to show the "pause" icon at page load
+    document.getElementById('audio-control').innerHTML = '❚❚'
+
     // Initially hide slideshow and title
     slideshow.style.display = 'none';
     slideshowTitle.style.display = 'none';
