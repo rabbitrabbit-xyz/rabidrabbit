@@ -19,6 +19,16 @@
       overflow-x: hidden;
     }
 
+    /* HEADER STYLES */
+    @keyframes scrollBackground {
+      0% {
+        background-position: 100% center;
+      }
+      100% {
+        background-position: -100% center;
+      }
+    }
+
     .header {
       position: relative;
       width: 100%;
@@ -30,15 +40,6 @@
       background: url('images/rabidrabbitheader2.png') repeat-x center center;
       background-size: auto 100%;
       animation: scrollBackground 20s linear infinite;
-    }
-
-    @keyframes scrollBackground {
-      0% {
-        background-position: 0 0;
-      }
-      100% {
-        background-position: 100% 0;
-      }
     }
 
     .home-link {
@@ -82,10 +83,11 @@
     }
 
     .home-link:hover .home-image {
-      transform: rotate(var(--random-rotate)) scale(1.1);
+      transform: rotate(10deg) scale(1.1); /* Rotation added back */
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
     }
 
+    /* MAIN SLIDESHOW AREA */
     .slideshow-container {
       margin-top: 40px;
       position: relative;
@@ -93,7 +95,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      display: none;
     }
 
     .slideshow-image {
@@ -165,6 +166,7 @@
       animation: fadeZoom 1s ease-in-out;
     }
 
+    /* Media Query for iPhone */
     @media (max-width: 768px) {
       .header {
         height: 100px;
@@ -176,54 +178,39 @@
       }
     }
 
-    #showSlideshowButton {
-      font-family: Courier, monospace;
-      font-size: 48px;
-      font-weight: bold;
-      color: white;
-      cursor: pointer;
-      margin-top: 50px;
-      border: none;
-      background: none;
-      text-align: center;
-      transition: color 0.3s ease;
-    }
-
-    #showSlideshowButton:hover {
-      color: #800080;
-    }
-
-    .collection-link {
-      font-family: Courier, monospace;
-      font-size: 24px;
-      color: white;
-      cursor: pointer;
+    /* Style for Collection Buttons */
+    .collection-button {
       margin-top: 20px;
+      padding: 10px 20px;
+      background-color: white;
+      color: black;
+      font-size: 18px;
       border: none;
-      background: none;
-      text-align: center;
-      display: block;
-      transition: color 0.3s ease;
-    }
-
-    .collection-link:hover {
-      color: #800080;
-    }
-
-    #backButton {
-      position: fixed;
-      top: 140px;
-      left: 20px;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 40px;
       cursor: pointer;
-      display: none;
-      z-index: 20;
+      text-transform: uppercase;
+      transition: background-color 0.3s, color 0.3s;
     }
 
-    #backButton:hover {
+    .collection-button:hover {
+      background-color: #800080;
+      color: white;
+    }
+
+    /* Style for the back arrow */
+    .back-button {
+      position: absolute;
+      top: 135px;
+      left: 20px;
+      font-size: 30px;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 20;
+      display: none;
+    }
+
+    .back-button:hover {
       color: #800080;
     }
   </style>
@@ -237,17 +224,11 @@
     </a>
   </div>
 
-  <button id="showSlideshowButton">Brain Damage Collection</button>
-  <a class="collection-link" href="#" id="natureCollectionLink">Nature Collection</a>
-  <a class="collection-link" href="#" id="indigoCollectionLink">Indigo Collection</a>
-
   <div class="slideshow-container">
     <button class="nav-button prev" onclick="changeSlide(-1)">&#10094;</button>
     <img id="slideshow" class="slideshow-image" src="images/Brain Damage 1.png" alt="Art 1">
     <button class="nav-button next" onclick="changeSlide(1)">&#10095;</button>
   </div>
-
-  <button id="backButton" onclick="closeSlideshow()">←</button>
 
   <audio id="background-music" autoplay loop>
     <source src="audio/19281211_The_Big_Rock_Candy_Mountains-Hobo_Jack_Turner.mp3" type="audio/mpeg">
@@ -256,87 +237,87 @@
 
   <button id="audio-control">▶</button>
 
+  <button class="collection-button" id="brainDamageBtn">Brain Damage Collection</button>
+  <button class="collection-button" id="natureCollectionBtn">Nature Collection</button>
+  <button class="collection-button" id="indigoCollectionBtn">Indigo Collection</button>
+
+  <button class="back-button" id="backButton">&#8592; Back</button>
+
   <script>
     const images = {
-      'brainDamage': [
+      brainDamage: [
         { src: "images/Brain Damage 1.png", alt: "Art 1" },
         { src: "images/Brain Damage 2.png", alt: "Art 2" },
         { src: "images/Brain Damage 3.png", alt: "Art 3" }
       ],
-      'nature': [
+      nature: [
         { src: "images/Nature 1.png", alt: "Nature 1" },
         { src: "images/Nature 2.png", alt: "Nature 2" },
         { src: "images/Nature 3.png", alt: "Nature 3" }
       ],
-      'indigo': [
+      indigo: [
         { src: "images/Indigo 1.png", alt: "Indigo 1" },
         { src: "images/Indigo 2.png", alt: "Indigo 2" },
         { src: "images/Indigo 3.png", alt: "Indigo 3" }
       ]
     };
 
-    let currentIndex = {
-      'brainDamage': 0,
-      'nature': 0,
-      'indigo': 0
-    };
-
+    let currentIndex = 0;
     let currentCollection = 'brainDamage';
     const slideshow = document.getElementById('slideshow');
-    const slideshowContainer = document.querySelector('.slideshow-container');
-    const showSlideshowButton = document.getElementById('showSlideshowButton');
     const backButton = document.getElementById('backButton');
 
     function changeSlide(direction) {
-      currentIndex[currentCollection] = (currentIndex[currentCollection] + direction + images[currentCollection].length) % images[currentCollection].length;
-
+      currentIndex = (currentIndex + direction + images[currentCollection].length) % images[currentCollection].length;
       slideshow.classList.remove('fade-animate');
       void slideshow.offsetWidth;
       slideshow.classList.add('fade-animate');
-
-      slideshow.src = images[currentCollection][currentIndex[currentCollection]].src;
-      slideshow.alt = images[currentCollection][currentIndex[currentCollection]].alt;
+      slideshow.src = images[currentCollection][currentIndex].src;
+      slideshow.alt = images[currentCollection][currentIndex].alt;
     }
 
-    function closeSlideshow() {
-      slideshowContainer.style.display = 'none';
-      showSlideshowButton.style.display = 'block';
-      backButton.style.display = 'none';
-    }
-
-    showSlideshowButton.addEventListener('click', () => {
-      currentCollection = 'brainDamage';
-      changeSlide(0);
-      slideshowContainer.style.display = 'block';
-      showSlideshowButton.style.display = 'none';
-      backButton.style.display = 'block';
-    });
-
-    document.getElementById('natureCollectionLink').addEventListener('click', () => {
-      currentCollection = 'nature';
-      changeSlide(0);
-      slideshowContainer.style.display = 'block';
-      showSlideshowButton.style.display = 'none';
-      backButton.style.display = 'block';
-    });
-
-    document.getElementById('indigoCollectionLink').addEventListener('click', () => {
-      currentCollection = 'indigo';
-      changeSlide(0);
-      slideshowContainer.style.display = 'block';
-      showSlideshowButton.style.display = 'none';
-      backButton.style.display = 'block';
-    });
-
-    document.getElementById('audio-control').addEventListener('click', function () {
-      const audio = document.getElementById('background-music');
-      if (audio.paused) {
-        audio.play();
-        this.textContent = '⏸';
+    function toggleMusic() {
+      const music = document.getElementById('background-music');
+      const button = document.getElementById('audio-control');
+      if (music.paused) {
+        music.play();
+        button.textContent = "⏸";
       } else {
-        audio.pause();
-        this.textContent = '▶';
+        music.pause();
+        button.textContent = "▶";
       }
+    }
+
+    document.getElementById('audio-control').addEventListener('click', toggleMusic);
+
+    document.getElementById('brainDamageBtn').addEventListener('click', () => {
+      currentCollection = 'brainDamage';
+      currentIndex = 0;
+      slideshow.src = images[currentCollection][currentIndex].src;
+      slideshow.alt = images[currentCollection][currentIndex].alt;
+      backButton.style.display = 'block';
+    });
+
+    document.getElementById('natureCollectionBtn').addEventListener('click', () => {
+      currentCollection = 'nature';
+      currentIndex = 0;
+      slideshow.src = images[currentCollection][currentIndex].src;
+      slideshow.alt = images[currentCollection][currentIndex].alt;
+      backButton.style.display = 'block';
+    });
+
+    document.getElementById('indigoCollectionBtn').addEventListener('click', () => {
+      currentCollection = 'indigo';
+      currentIndex = 0;
+      slideshow.src = images[currentCollection][currentIndex].src;
+      slideshow.alt = images[currentCollection][currentIndex].alt;
+      backButton.style.display = 'block';
+    });
+
+    backButton.addEventListener('click', () => {
+      backButton.style.display = 'none';
+      slideshow.src = images[currentCollection][0].src;
+      slideshow.alt = images[currentCollection][0].alt;
     });
   </script>
 </body>
