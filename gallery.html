@@ -122,10 +122,19 @@
     .slideshow-placeholder {
       font-size: 36px; /* Increased font size */
       font-family: 'Courier Prime', Courier, monospace;
+      font-weight: bold; /* Make the text bold */
       color: white;
       text-align: center;
-      background-color: rgba(0, 0, 0, 0.3);
-      padding: 20px;
+      animation: glow 2s infinite alternate; /* Add glowing effect */
+    }
+
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 5px white, 0 0 10px white, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff;
+      }
+      100% {
+        text-shadow: 0 0 10px white, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff;
+      }
     }
 
     .nav-button {
