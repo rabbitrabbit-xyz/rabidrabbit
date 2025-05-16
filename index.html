@@ -10,6 +10,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
   
   <style>
+    @keyframes scrollBackground {
+      0% { background-position: 100% center; }
+      100% { background-position: -100% center; }
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 120px;
+      overflow: hidden;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      box-sizing: border-box;
+      background: url('images/rabidrabbitheader2.png') repeat-x center center;
+      background-size: auto 100%;
+      animation: scrollBackground 20s linear infinite;
+      z-index: 10;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -21,6 +41,7 @@
       align-items: center;
       flex-direction: column;
       text-align: center;
+      margin-top: 130px; /* Push content below the header */
     }
 
     .background-image {
@@ -64,6 +85,8 @@
   </style>
 </head>
 <body>
+
+  <div class="header"></div>
 
   <img class="background-image" src="images/RABID RABBIT.jpeg" alt="Rabid Rabbit Art">
   
