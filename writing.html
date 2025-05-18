@@ -43,9 +43,38 @@
       letter-spacing: 3px;
       font-family: 'Courier Prime', Courier, monospace;
     }
+
+    .home-button-container {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+    }
+
+    .home-button {
+      background-color: #fff;
+      color: #000;
+      font-family: 'Courier Prime', Courier, monospace;
+      padding: 10px 22px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .home-button:hover {
+      background-color: #555;
+      color: #fff;
+    }
   </style>
 </head>
 <body>
+  <!-- Home Button -->
+  <div class="home-button-container">
+    <a href="index.html" class="home-button">Home</a>
+  </div>
+
   <!-- Header Image -->
   <div class="header"></div>
 
