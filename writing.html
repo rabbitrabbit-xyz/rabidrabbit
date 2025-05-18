@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Welcome to Rabid Rabbit</title>
   <link rel="icon" href="rabbitico.ico" type="image/x-icon">
-  <link rel="stylesheet" href="styles.css"> <!-- Shared CSS file -->
+  <link rel="stylesheet" href="styles.css"> <!-- Link to your shared CSS file if you have one -->
   <style>
     body {
       margin: 0;
@@ -16,7 +16,16 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
+      height: 100vh;
+    }
+
+    /* Header Image */
+    .header {
+      width: 100%;
+      height: 50vh; /* Adjust based on how big you want the header image */
+      background-image: url('images/RABID RABBIT HEADER.png'); /* Updated to your header image */
+      background-size: cover;
+      background-position: center;
     }
 
     h1 {
@@ -66,10 +75,8 @@
     <a href="index.html" class="home-button">Home</a>
   </div>
 
-  <!-- Shared Banner/Header -->
-  <div class="banner">
-    <img src="images/RABID RABBIT HEADER.png" alt="Rabid Rabbit Banner" style="width:100%;height:auto;display:block;">
-  </div>
+  <!-- Header Image -->
+  <div class="header"></div>
 
   <h1>Welcome to Rabid Rabbit</h1>
 
