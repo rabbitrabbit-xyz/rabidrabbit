@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Welcome to Rabid Rabbit</title>
   <link rel="icon" href="rabbitico.ico" type="image/x-icon">
-  <link rel="stylesheet" href="styles.css"> <!-- Link to your shared CSS file if you have one -->
+  <link rel="stylesheet" href="styles.css">
   <style>
     body {
       margin: 0;
@@ -13,41 +13,19 @@
       background-color: #000;
       color: white;
       font-family: 'Courier Prime', Courier, monospace;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 100vh;
+      min-height: 100vh;
     }
 
-    /* Header Image */
-    .header {
+    /* Banner at the top */
+    .banner {
       width: 100%;
-      height: 50vh; /* Adjust based on how big you want the header image */
-      background-image: url('images/RABID RABBIT HEADER.png'); /* Updated to your header image */
-      background-size: cover;
-      background-position: center;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-top: 20px;
-      text-align: center;
-      font-family: 'Courier Prime', Courier, monospace;
-    }
-
-    .coming-soon {
-      margin-top: 80px;
-      font-size: 2.5rem;
-      text-align: center;
-      color: #fff;
-      letter-spacing: 3px;
-      font-family: 'Courier Prime', Courier, monospace;
-    }
-
-    .home-button-container {
-      position: absolute;
-      top: 30px;
-      left: 30px;
+      background: #111;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      box-sizing: border-box;
+      height: 75px;
+      border-bottom: 2px solid #222;
     }
 
     .home-button {
@@ -59,30 +37,58 @@
       border-radius: 5px;
       font-size: 1.2rem;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, color 0.3s ease;
       text-decoration: none;
+      margin-left: 32px;
+      margin-right: 32px;
     }
 
     .home-button:hover {
       background-color: #555;
       color: #fff;
     }
+
+    .banner-logo {
+      height: 60px;
+      /* Adjust width as needed or set max-width */
+      object-fit: contain;
+      display: block;
+    }
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 60px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .coming-soon {
+      margin-top: 80px;
+      font-size: 2.5rem;
+      text-align: center;
+      color: #fff;
+      letter-spacing: 3px;
+    }
   </style>
 </head>
 <body>
-  <!-- Home Button -->
-  <div class="home-button-container">
+  <!-- Banner with Home button and logo -->
+  <div class="banner">
     <a href="index.html" class="home-button">Home</a>
+    <img src="images/RABID RABBIT HEADER.png" alt="Rabid Rabbit Header" class="banner-logo" />
   </div>
 
-  <!-- Header Image -->
-  <div class="header"></div>
-
-  <h1>Welcome to Rabid Rabbit</h1>
-
-  <!-- Coming Soon Message -->
-  <div class="coming-soon">
-    COMING SOON
+  <div class="main-content">
+    <h1>Welcome to Rabid Rabbit</h1>
+    <div class="coming-soon">
+      COMING SOON
+    </div>
   </div>
 </body>
 </html>
