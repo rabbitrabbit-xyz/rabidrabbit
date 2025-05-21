@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>About - Rabid Rabbit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
       background: #111;
@@ -73,6 +74,17 @@
       transform: rotate(10deg) scale(1.1);
       box-shadow: 0 0 20px rgba(255,255,255,0.8);
     }
+    /* Responsive content container */
+    .content-container {
+      max-width: 600px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 40px 24px 0 24px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     .center-message {
       margin-top: 180px;
       font-size: 24px;
@@ -80,11 +92,19 @@
       text-align: center;
       color: #fff;
       text-shadow: 2px 2px 8px #222;
+      line-height: 1.6;
     }
     @media (max-width: 768px) {
-      .header { height: 100px; }
+      .header { height: 100px; background-size: auto 100%; }
       .home-link { top: 10px; left: 10px; }
-      .center-message { font-size: 32px; }
+      .home-image { width: 54px; height: 54px; }
+      .content-container { padding: 24px 4vw 0 4vw; }
+      .center-message { font-size: 18px; margin-top: 130px; }
+    }
+    @media (max-width: 480px) {
+      .header { height: 60px; background-size: auto 100%; }
+      .center-message { font-size: 15px; margin-top: 100px; }
+      .content-container { padding: 12px 2vw 0 2vw; }
     }
   </style>
 </head>
@@ -95,8 +115,10 @@
       <div class="home-text">Back to Home</div>
     </a>
   </div>
-  <div class="center-message">
-    rabid rabbit is the creative identity and online hub for a wide range of original work, including art, music, writing, and more. rabid rabbit’s writing has appeared in bright flash literary review and the taborian. as a member of the band blackwater, rabid rabbit has released multiple records and performed at notable vermont venues such as higher ground and nectar’s.
+  <div class="content-container">
+    <div class="center-message">
+      rabid rabbit is the creative identity and online hub for a wide range of original work, including art, music, writing, and more. rabid rabbit’s writing has appeared in bright flash literary review and the taborian. as a member of the band blackwater, rabid rabbit has released multiple records and performed at notable vermont venues such as higher ground and nectar’s.
+    </div>
   </div>
 </body>
 </html>
