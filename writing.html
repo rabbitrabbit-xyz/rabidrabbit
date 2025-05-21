@@ -103,11 +103,18 @@
       margin-bottom: 20px;
     }
 
-    .coming-soon {
-      margin-top: 80px;
-      font-size: 2.5rem;
+    .writing-links a {
+      display: block;
+      margin: 20px 0;
       color: #fff;
-      letter-spacing: 3px;
+      font-size: 1.5rem;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+
+    .writing-links a:hover {
+      color: #ffb347;
+      text-shadow: 0 0 8px #fff;
     }
 
     @media (max-width: 768px) {
@@ -121,8 +128,8 @@
       h1 {
         font-size: 2rem;
       }
-      .coming-soon {
-        font-size: 1.5rem;
+      .writing-links a {
+        font-size: 1.1rem;
       }
     }
   </style>
@@ -137,8 +144,13 @@
 
   <div class="main-content">
     <h1>Welcome to Rabid Rabbit</h1>
-    <div class="coming-soon">
-      COMING SOON
+    <div class="writing-links">
+      <a href="https://brightflash1000.com/2023/11/03/the-distance-between-the-fowlers/" target="_blank" rel="noopener">
+        The Distance Between the Fowlers
+      </a>
+      <a href="https://thetaborian.com/issue-2024-03-when-the-winds-come-crashing-down/" target="_blank" rel="noopener">
+        When the Winds Come Crashing Down
+      </a>
     </div>
   </div>
 
