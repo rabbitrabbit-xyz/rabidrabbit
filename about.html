@@ -1,39 +1,46 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>About - Rabid Rabbit</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Writing</title>
+  <link rel="icon" href="rabbitico.ico" type="image/x-icon">
   <style>
+    @keyframes scrollBackground {
+      0% {
+        background-position: 100% center;
+      }
+      100% {
+        background-position: -100% center;
+      }
+    }
+
     body {
-      background: #111;
+      font-family: 'Courier Prime', Courier, monospace;
+      background-color: #000;
       color: #fff;
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      font-family: 'Courier Prime', 'Courier', monospace, sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      position: relative;
     }
+
     .header {
-      position: fixed;
-      top: 0;
+      position: relative;
       width: 100%;
       height: 120px;
       overflow: hidden;
       border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      box-sizing: border-box;
       background: url('images/rabidrabbitheader2.png') repeat-x center center;
       background-size: auto 100%;
       animation: scrollBackground 20s linear infinite;
-      z-index: 10;
     }
-    @keyframes scrollBackground {
-      0% { background-position: 100% center; }
-      100% { background-position: -100% center; }
-    }
+
     .home-link {
       position: absolute;
       top: 15px;
@@ -48,16 +55,18 @@
       z-index: 2;
       transition: transform 0.3s ease;
     }
+
     .home-image {
       width: 70px;
       height: 70px;
       object-fit: cover;
       border: 2px solid white;
       border-radius: 50%;
-      box-shadow: 0 0 10px rgba(255,255,255,0.5);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .home-text {
       margin-top: 5px;
       font-size: 12px;
@@ -65,46 +74,63 @@
       transform: translateY(10px);
       transition: opacity 0.4s ease, transform 0.4s ease, text-shadow 0.3s ease;
     }
+
     .home-link:hover .home-text {
       opacity: 1;
       transform: translateY(0);
       text-shadow: 0 0 5px white, 0 0 10px white;
     }
+
     .home-link:hover .home-image {
-      transform: rotate(10deg) scale(1.1);
-      box-shadow: 0 0 20px rgba(255,255,255,0.8);
+      transform: rotate(var(--random-rotate)) scale(1.1);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
     }
-    /* Responsive content container */
-    .content-container {
-      max-width: 600px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 40px 24px 0 24px;
-      box-sizing: border-box;
+
+    .main-content {
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-    .center-message {
-      margin-top: 180px;
-      font-size: 24px;
-      font-family: 'Courier Prime', 'Courier', monospace, sans-serif;
+      justify-content: center;
       text-align: center;
+      width: 100%;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    .writing-links a {
+      display: block;
+      margin: 20px 0;
       color: #fff;
-      text-shadow: 2px 2px 8px #222;
-      line-height: 1.6;
+      font-size: 1.5rem;
+      text-decoration: underline;
+      transition: color 0.2s;
     }
+
+    .writing-links a:hover {
+      color: #ffb347;
+      text-shadow: 0 0 8px #fff;
+    }
+
     @media (max-width: 768px) {
-      .header { height: 100px; background-size: auto 100%; }
-      .home-link { top: 10px; left: 10px; }
-      .home-image { width: 54px; height: 54px; }
-      .content-container { padding: 24px 4vw 0 4vw; }
-      .center-message { font-size: 18px; margin-top: 130px; }
-    }
-    @media (max-width: 480px) {
-      .header { height: 60px; background-size: auto 100%; }
-      .center-message { font-size: 15px; margin-top: 100px; }
-      .content-container { padding: 12px 2vw 0 2vw; }
+      .header {
+        height: 100px;
+      }
+      .home-link {
+        top: 10px;
+        left: 10px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .writing-links a {
+        font-size: 1.1rem;
+      }
     }
   </style>
 </head>
@@ -115,10 +141,26 @@
       <div class="home-text">Back to Home</div>
     </a>
   </div>
-  <div class="content-container">
-    <div class="center-message">
-      rabid rabbit is the creative identity and online hub for a wide range of original work, including art, music, writing, and more. rabid rabbit’s writing has appeared in bright flash literary review and the taborian. as a member of the band blackwater, rabid rabbit has released multiple records and performed at notable vermont venues such as higher ground and nectar’s.
+
+  <div class="main-content">
+    <h1>About</h1>
+    <div class="writing-links">
+      <a href="https://brightflash1000.com/2023/11/03/the-distance-between-the-fowlers/" target="_blank" rel="noopener">
+        The Distance Between the Fowlers
+      </a>
+      <a href="https://thetaborian.com/issue-2024-03-when-the-winds-come-crashing-down/" target="_blank" rel="noopener">
+        When the Winds Come Crashing Down
+      </a>
     </div>
   </div>
+
+  <script>
+    // Match the interactive home-link hover effect from music.html
+    const homeLink = document.getElementById('homeLink');
+    homeLink.addEventListener('mouseover', () => {
+      const randomDegree = (Math.random() * 10 - 5).toFixed(2) + 'deg';
+      homeLink.style.setProperty('--random-rotate', randomDegree);
+    });
+  </script>
 </body>
 </html>
