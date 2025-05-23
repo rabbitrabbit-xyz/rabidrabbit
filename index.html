@@ -5,16 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rabid Rabbit</title>
   <link rel="icon" href="rabbitico.ico" type="image/x-icon">
-
-  <!-- Add Courier Prime from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
-  
   <style>
     @keyframes scrollBackground {
       0% { background-position: 100% center; }
       100% { background-position: -100% center; }
     }
-
     .header {
       position: fixed;
       top: 0;
@@ -29,7 +25,6 @@
       animation: scrollBackground 20s linear infinite;
       z-index: 10;
     }
-
     body {
       margin: 0;
       padding: 0;
@@ -41,9 +36,8 @@
       align-items: center;
       flex-direction: column;
       text-align: center;
-      margin-top: 250px; /* Push content below the header */
+      margin-top: 250px;
     }
-
     .background-image {
       width: 50%;
       max-width: 600px;
@@ -51,21 +45,23 @@
       object-fit: cover;
       margin-bottom: 30px;
     }
-
     .gallery-title {
       font-size: 36px;
       font-weight: bold;
       color: black;
       margin-bottom: 30px;
     }
-
     .button-container {
       display: flex;
-      flex-direction: row; /* <-- Changed from column to row */
+      flex-direction: row;
+      flex-wrap: wrap;
       gap: 15px;
       align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
     }
-
     .nav-button {
       padding: 15px 30px;
       font-size: 20px;
@@ -78,20 +74,27 @@
       transition: background-color 0.3s;
       display: inline-block;
     }
-
     .nav-button:hover {
       background-color: #333;
+    }
+    @media (max-width: 600px) {
+      .nav-button {
+        font-size: 16px;
+        padding: 12px 18px;
+      }
+      .gallery-title {
+        font-size: 24px;
+      }
+      .background-image {
+        width: 90%;
+      }
     }
   </style>
 </head>
 <body>
-
   <div class="header"></div>
-
   <img class="background-image" src="images/RABID RABBIT.jpeg" alt="Rabid Rabbit Art">
-  
   <div class="gallery-title">Rabid Rabbit Gallery</div>
-
   <div class="button-container">
     <a class="nav-button" href="gallery.html">Art Gallery</a>
     <a class="nav-button" href="music.html">Music</a>
