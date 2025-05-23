@@ -54,17 +54,17 @@
     .button-container {
       display: flex;
       flex-direction: row;
-      flex-wrap: nowrap;     /* Prevent wrapping on desktop */
+      flex-wrap: nowrap;
       gap: 15px;
       align-items: center;
       justify-content: center;
       width: 100%;
-      max-width: 800px;      /* Increased width */
+      max-width: 800px;
       margin: 0 auto;
     }
     .nav-button {
-      flex-shrink: 1;        /* Allow buttons to shrink */
-      padding: 15px 24px;    /* Slightly less padding */
+      flex-shrink: 1;
+      padding: 15px 24px;
       font-size: 20px;
       background-color: black;
       border: none;
@@ -77,6 +77,20 @@
     }
     .nav-button:hover {
       background-color: #333;
+    }
+    .social-link {
+      margin-top: 30px;
+    }
+    .social-link a {
+      color: #E4405F;
+      font-size: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: text-decoration 0.2s, color 0.2s;
+    }
+    .social-link a:hover {
+      text-decoration: underline;
+      color: #ad1457;
     }
     @media (max-width: 600px) {
       .button-container {
@@ -106,6 +120,11 @@
     <a class="nav-button" href="music.html">Music</a>
     <a class="nav-button" href="writing.html">Writing</a>
     <a class="nav-button" href="about.html">About</a>
+  </div>
+  <div class="social-link">
+    <a href="https://www.instagram.com/rabbit.ltd/?igsh=NW11OGVramU2YzR5&utm_source=qr#" target="_blank" rel="noopener noreferrer">
+      Follow on Instagram
+    </a>
   </div>
   <div style="height: 40px;"></div>
 </body>
